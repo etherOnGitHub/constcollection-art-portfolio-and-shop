@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', os.environ.get('HEROKU_LINK', 'default')]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://*.herokuapp.com', 
