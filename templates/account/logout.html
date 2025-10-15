@@ -1,0 +1,30 @@
+﻿{% load allauth i18n %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="modal fade align-items-center justify-content-center"
+     id="logoutModal" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0 border-1 text-black">
+            <div class="modal-body p-4 text-center">
+                <h1 class="h5 mb-3">{% trans "Sign Out" %}</h1>
+                <p class="mb-4">{% trans "Are you sure you want to sign out?" %}</p>
+
+                {% url 'account_logout' as action_url %}
+                <form method="post" action="{{ action_url }}">
+                    {% csrf_token %}
+                    {{ redirect_field }}
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="submit" class="btn btn-dark rounded-0 px-4 py-2">
+                            {% trans "Sign Out" %}
+                        </button>
+                        <a href="/" class="btn btn-outline-dark rounded-0 px-4 py-2">
+                            {% trans "Cancel" %}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
