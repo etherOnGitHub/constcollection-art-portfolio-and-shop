@@ -1,5 +1,6 @@
 ﻿{% url 'home' as home_url %}
 {% load static %}
+
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -10,7 +11,7 @@
 
 <head>
     <!-- icon -->
-    <link rel="icon" type="image/png" href="{% static 'images/logoonly.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/logoonlywhite.png' %}">
     <title>CONST COLLECTION</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,8 +34,6 @@
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -51,18 +50,18 @@
         <div class="container-fluid">
             <!-- Mobile: Hamburger menu on left -->
             <button class="navbar-toggler order-0 order-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Logo - centered on mobile, centered on desktop -->
             <a class="navbar-brand mx-lg-auto order-1 mx-auto" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="logo">
             </a>
-            
+
             <!-- Social Icons - visible on desktop, hidden in collapse on mobile -->
             <div class="d-none d-lg-flex order-2 social-icons-desktop">
-                <a href="https://instagram.com/" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
@@ -72,34 +71,42 @@
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </div>
-            
+
             <!-- Collapsible content -->
             <div class="navbar-collapse order-lg-1 collapse order-3" id="navbarContent">
                 <!-- Navigation Links -->
                 <ul class="navbar-nav mb-lg-0 mb-2 me-auto">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">HOME</a>
+                           href="{% url 'home' %}">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}#">GALLERY</a>
+                           href="{% url 'home' %}#">GALLERY</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" aria-current="page"
-                            href="{% url 'about' %}">ABOUT</a>
+                           href="{% url 'about' %}">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}#">FAQ</a>
+                           href="{% url 'home' %}#">FAQ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}#">CONTACT</a>
+                           href="{% url 'home' %}#">CONTACT</a>
                     </li>
-              
+
                 </ul>
-                
+                {% if user.is_authenticated %}
+                <div class="flex">
+                    <a href="#" data-open="logout">Logout</a>
+                </div>
+                {% else %}
+                <div class="flex">
+                    <a href="#" data-open="login">Login</a>
+                </div>
+                {% endif %}
                 <!-- Social Icons for Mobile -->
                 <div class="d-lg-none navbar-nav social-icons-mobile justify-content-center">
                     <div class="d-flex justify-content-center gap-3 py-2">
@@ -133,12 +140,12 @@
     </div>
 
     <main class="main-bg flex-shrink-0">
-    {% if user.is_authenticated %}
-    <p class="m-3 text-end">Signed in as {{ user }} — explore the portfolio.</p>
-    {% else %}
-    <p class="m-3 text-end">Not signed in — sign up to follow new work.</p>
-    {% endif %}
-        
+        {% if user.is_authenticated %}
+        <p class="m-3 text-end">Signed in as {{ user }} — explore the portfolio.</p>
+        {% else %}
+        <p class="m-3 text-end">Not signed in — sign up to follow new work.</p>
+        {% endif %}
+
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
@@ -150,7 +157,7 @@
         <div class="container">
             <div class="row">
                 <!-- Logo column: show logo and a single studio note -->
-                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 text-center">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <div class="footer-logo">
                         <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="img-fluid footer-logo-img mb-2" />
                     </div>
@@ -158,7 +165,7 @@
                 </div>
 
                 <!-- Exhibitions & Viewings -->
-                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5 class="footer-heading">Exhibitions & Viewings</h5>
                     <ul class="list-unstyled footer-list">
                         <li><strong>Current:</strong> Selected galleries — by appointment</li>
@@ -169,7 +176,7 @@
                 </div>
 
                 <!-- Bookings & Contacts -->
-                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5 class="footer-heading">Bookings & Contacts</h5>
                     <p class="footer-text">For gallery bookings, artist talks, purchases or viewings please contact the artist or curator directly.</p>
                     <ul class="list-unstyled footer-list footer-contact">
@@ -195,7 +202,7 @@
                 </div>
 
                 <!-- Connect -->
-                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5 class="footer-heading">Connect</h5>
                     <p class="footer-text">Follow the studio for updates, new works and exhibition announcements.</p>
                     <ul class="list-unstyled footer-list social-list">
@@ -220,7 +227,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Copyright -->
             <div class="row mt-4">
                 <div class="col-12">
@@ -235,13 +242,18 @@
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    
+
     <!-- Custom JavaScript -->
     <script src="{% static 'js/script.js' %}"></script>
-  
-    
+
+    <!-- modals -->
+    <div id="modal-container">
+        {% include "account/login.html" %}
+        {% include "account/logout.html" %}
+        {% include "account/signup.html" %}
+    </div>
     <!-- Additional blocks for child templates -->
     {% block extras %}{% endblock %}
 </body>
