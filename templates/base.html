@@ -100,11 +100,11 @@
                 </ul>
                 {% if user.is_authenticated %}
                 <div class="flex">
-                    <a href="#" data-open="logout">Logout</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
                 </div>
                 {% else %}
                 <div class="flex">
-                    <a href="#" data-open="login">Login</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                 </div>
                 {% endif %}
                 <!-- Social Icons for Mobile -->
