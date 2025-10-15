@@ -108,6 +108,46 @@ nav.navbar .navbar-brand img.logo {
         flex: none
         }
     }
+
+/* iPad Pro specific: stack image under text at widths around 1024px
+   Keep desktop (>1199.98px and >=992px) unchanged. Use a narrow range
+   to target tablets like iPad Pro. */
+@media (min-width: 992px) and (max-width: 1100px) {
+    /* Force the about row to stack vertically so image sits under text */
+    section#about article.row.align-items-center {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Make the text column full width */
+    section#about .col-lg-6:first-child {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Place the image column below and center the image */
+    section#about .col-lg-6:last-child {
+        width: 100%;
+        max-width: 100%;
+        text-align: center; /* center image */
+        margin-top: 1.25rem;
+    }
+
+    section#about .artist-image {
+        max-width: 420px; /* reasonable size for tablet */
+        width: 70%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    /* Tighten spacing of section title on tablet */
+    .about-me .section-title {
+        margin-bottom: 3.25rem;
+    }
+}
 .about-text-col p {
     color: #4b4b4b;
     line-height: 1.75
@@ -216,6 +256,80 @@ nav.navbar .navbar-brand img.logo {
     display: inline-block;
     height: auto
     }
+
+/* Tablet styles (<= 991.98px) - keep desktop unchanged above this breakpoint */
+@media (max-width: 991.98px) {
+    .about-me .section-title {
+        margin-bottom: 3.5rem; /* reduce large desktop spacing */
+        font-size: 1.6rem;
+    }
+
+    .about-me .about-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .about-me .about-text {
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
+    /* Image column should be centered and a bit smaller on tablets */
+    .artist-image {
+        max-width: 360px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .about-content {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+/* Mobile styles (<= 767.98px) */
+@media (max-width: 767.98px) {
+    /* Stack content with tighter spacing */
+    .about-me {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .about-me .section-title {
+        margin-bottom: 2.5rem;
+        font-size: 1.35rem;
+    }
+
+    .about-me .about-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-me .about-text {
+        font-size: 0.96rem;
+        line-height: 1.6;
+        margin-bottom: 0.85rem;
+    }
+
+    /* Ensure signature image scales nicely on small screens */
+    .signature-image {
+        max-width: 6.5rem;
+        width: 45%;
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    /* Make footer signature elements align left on very small screens */
+    .about-signature {
+        text-align: left;
+    }
+
+    /* Center artist image and reduce size for small phones */
+    .artist-image {
+        max-width: 300px;
+        margin: 0 auto 1rem auto;
+        display: block;
+    }
+}
 /* Hero section - full viewport background image with gradient overlay */
 .hero {
     position: relative;
