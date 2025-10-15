@@ -22,6 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <!-- Xanh Mono font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -31,6 +33,8 @@
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -57,14 +61,14 @@
             </a>
             
             <!-- Social Icons - visible on desktop, hidden in collapse on mobile -->
-            <div class="d-none d-lg-flex social-icons-desktop order-2">
-                <a href="https://instagram.com/" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+            <div class="d-none d-lg-flex order-2 social-icons-desktop">
+                <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
+                <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="https://facebook.com/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/share/1MZ8X8mS4t/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </div>
@@ -82,8 +86,8 @@
                             href="{% url 'home' %}#">GALLERY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}#about">ABOUT</a>
+                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" aria-current="page"
+                            href="{% url 'about' %}">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
@@ -99,17 +103,14 @@
                 <!-- Social Icons for Mobile -->
                 <div class="d-lg-none navbar-nav social-icons-mobile justify-content-center">
                     <div class="d-flex justify-content-center gap-3 py-2">
-                        <a href="https://instagram.com/" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
+                        <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="https://facebook.com/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/share/1MZ8X8mS4t/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com/" class="nav-link social-link" aria-label="Follow us on Twitter/X" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
@@ -149,15 +150,15 @@
         <div class="container">
             <div class="row">
                 <!-- Logo column: show logo and a single studio note -->
-                <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 text-center">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <div class="footer-logo">
-                        <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="img-fluid footer-logo-img mb-2" style="max-width:300px; height:auto;" />
+                        <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="img-fluid footer-logo-img mb-2" />
                     </div>
                     <p class="footer-note">Studio based in Sweden. Works available by request.</p>
                 </div>
 
                 <!-- Exhibitions & Viewings -->
-                <div class="col-lg-3 col-md-4 mb-lg-0 mb-4">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5 class="footer-heading">Exhibitions & Viewings</h5>
                     <ul class="list-unstyled footer-list">
                         <li><strong>Current:</strong> Selected galleries — by appointment</li>
@@ -168,7 +169,7 @@
                 </div>
 
                 <!-- Bookings & Contacts -->
-                <div class="col-lg-3 col-md-4 mb-lg-0 mb-4">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5 class="footer-heading">Bookings & Contacts</h5>
                     <p class="footer-text">For gallery bookings, artist talks, purchases or viewings please contact the artist or curator directly.</p>
                     <ul class="list-unstyled footer-list footer-contact">
@@ -194,15 +195,24 @@
                 </div>
 
                 <!-- Connect -->
-                <div class="col-lg-3 col-md-4 mb-lg-0 mb-4">
+                <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0 text-center text-md-start">
                     <h5 class="footer-heading">Connect</h5>
                     <p class="footer-text">Follow the studio for updates, new works and exhibition announcements.</p>
                     <ul class="list-unstyled footer-list social-list">
                         <li>
-                            <a href="#" class="footer-link"><i class="fab fa-instagram"></i> Instagram: @constcollectionart</a>
+                            <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="footer-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
                         </li>
                         <li>
-                            <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook: Const Collection Art by Cecilia K.</a>
+                            <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="footer-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube"></i> YouTube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/share/1MZ8X8mS4t/" class="footer-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
                         </li>
                         <li class="mt-2">
                             <a href="#newsletter" class="footer-link">Join the mailing list</a>

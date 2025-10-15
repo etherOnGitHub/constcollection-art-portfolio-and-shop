@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% url 'h' as home_url %}
+{% load static %}
+{% block content %}
+<section id="about" class="about-me py-5">
+  <div class="container">
+    <header>
+      <h2 class="section-title text-center">About the Artist</h2>
+    </header>
+    <article class="row align-items-center">
+      <!-- Text Column -->
+      <div class="col-lg-6">
+        <div class="about-content">
+          <h3 class="about-subtitle">Creating Quiet Narratives</h3>
+
+          <h3 class="about-subtitle">Bio</h3>
+          <p class="about-text">
+            I am an artist born and raised in Zimbabwe, now living in Southern Sweden. As a painter but foremost a
+            mother, I dive into a discovery of selfhood, motherhood, daughterhood and matrescence through my large
+            acrylic works. I aim to enrich a dialogue of a new female revolution that anchors itself in our
+            understanding of the spiritual DNA and experiences which bonds grandmothers, mothers and daughters in the
+            pathway of life; past, future and present.
+          </p>
+
+          <h3 class="about-subtitle">My approach</h3>
+          <p class="about-text">
+            My paintings are a sacred act, one of both resistance and restoration. They are a response to the subtle,
+            yet great harm that I witness social media inflicting on the inner lives of my daughters. In a world
+            mediated by curated images and momentary digital impressions, I turn to painting as a means of slowing
+            down time, re-centering presence and reclaiming the untold stories of our daughters. Through my art I
+            construct symbolic “filters”, not the digital kind, but spiritual veils that both reveal and protect.
+            These “filters” offer a deeper seeing, a layered truth shaped by love, ancestral memory, intuition and
+            the unseen forces that guide us. My work is a call for change, a gentle yet unyielding demand for a new
+            way of being. In this world of fragmentation, our daughters are growing up surrounded by false mirrors.
+            It is now a time for truth-telling and reclamation of the feminine through love.
+          </p>
+
+          <footer class="about-signature mt-4">
+            <p class="signature-text">Warm regards,</p>
+            <p class="signature-name">Const Collection</p>
+            <img src="{% static 'images/signature.png' %}" alt="Artist signature" class="signature-image" style="width: 8rem;">
+          </footer>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="col-lg-6 text-lg-end text-center mt-4 mt-lg-0">
+        <img src="{% static 'images/artist.png' %}" alt="Artist portrait" class="artist-image" />
+      </div>
+    </article>
+  </div>
+</section>
+{% endblock content %}
+
