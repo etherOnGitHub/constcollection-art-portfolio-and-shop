@@ -53,27 +53,23 @@ nav.navbar .navbar-brand img.logo {
     display: block;
     margin: 0 auto;
 }
-
-/* Prevent footer logo overlapping on tablet sizes (e.g. iPad Pro) */
 @media (min-width: 768px) and (max-width: 1199.98px) {
     .footer-logo-img {
-        max-width: 200px; /* smaller on tablets to avoid overlapping text */
+        max-width: 200px; 
     }
-    /* ensure columns align to top so long images don't overlap neighbouring content */
+    
     footer .row { align-items: flex-start; }
 }
 
 @media (max-width: 767.98px) {
-    /* on small screens allow logo to be a bit wider relative to column */
+    
     .footer-logo-img { max-width: 260px; }
 }
-
-/* Top banner and footer background color */
 .top-banner {
     background-color: #ECE3D3;
 }
 
-/* Navbar background color and link contrast */
+/* Navbar styles */
 .navbar {
     background-color: #fdfbf9;
 }
@@ -92,7 +88,7 @@ nav.navbar .navbar-brand img.logo {
 
 .footer {
     background-color: #f6f2eb;
-    color: #2f2f2f; /* darker text for contrast */
+    color: #2f2f2f; 
 }
 
 .footer {
@@ -108,12 +104,26 @@ nav.navbar .navbar-brand img.logo {
 }
 
 .footer a {
-    color: #2f2f2f;
-    text-decoration: underline;
+    color: #3b3b3b; 
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
 }
 
-.footer a:hover {
+.footer a:hover,
+.footer a:focus {
     color: #111;
+    border-color: rgba(0,0,0,0.08); 
+}
+
+/* Footer heading style */
+.footer-heading {
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-size: .9rem;
+    margin-bottom: .8rem;
+    color: #222;
 }
 
 /* Navbar social icons  */
