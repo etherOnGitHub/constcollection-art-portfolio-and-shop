@@ -39,3 +39,80 @@
             <p class="text-center mb-0 py-2">Soft lines, strong stories • Every piece tells a truth</p>
         </div>
     </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <!-- Mobile: Hamburger menu on left -->
+            <button class="navbar-toggler order-0 order-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Logo - centered on mobile, centered on desktop -->
+            <a class="navbar-brand order-1 mx-auto mx-lg-auto" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="logo">
+            </a>
+            
+            <!-- Social Icons - visible on desktop, hidden in collapse on mobile -->
+            <div class="d-none d-lg-flex order-2 social-icons-desktop">
+                <a href="https://instagram.com/" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://facebook.com/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse order-3 order-lg-1" id="navbarContent">
+                <!-- Navigation Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}#">GALLERY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}#">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}#">CONTACT</a>
+                    </li>
+              
+                </ul>
+                
+                <!-- Social Icons for Mobile -->
+                <div class="d-lg-none navbar-nav social-icons-mobile justify-content-center">
+                    <div class="d-flex justify-content-center gap-3 py-2">
+                        <a href="https://instagram.com/" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://facebook.com/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="nav-link social-link" aria-label="Follow us on Twitter/X" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
