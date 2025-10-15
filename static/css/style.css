@@ -2,6 +2,16 @@ h1 {
     color: #333;
 }
 
+/* Site font: Xanh Mono (imported from Google Fonts) */
+body, button, input, textarea, select {
+    font-family: 'Xanh Mono', monospace;
+    font-weight: 400; /* base weight */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Xanh Mono', monospace;
+}
+
 /* Navbar logo responsive sizing */
 .logo {
     max-height: 73px;
@@ -76,12 +86,14 @@ nav.navbar .navbar-brand img.logo {
 
 .navbar .nav-link {
     color: #333333;
-    font-weight: 500;
+    font-weight: 700; /* increased for contrast */
+    letter-spacing: 0.12em; /* increased tracking for navbar pages */
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
     color: #111111;
+    letter-spacing: 0.14em;
 }
 
 .navbar .navbar-brand { color: #333; }
@@ -118,13 +130,16 @@ nav.navbar .navbar-brand img.logo {
 
 /* Footer heading style */
 .footer-heading {
-    font-weight: 600;
+    font-weight: 700; /* stronger heading weight for contrast */
     letter-spacing: .06em;
     text-transform: uppercase;
     font-size: .9rem;
     margin-bottom: .8rem;
     color: #222;
 }
+
+/* Make footer links slightly stronger for legibility */
+.footer a { font-weight: 600; }
 
 /* Navbar social icons  */
 .social-link {
