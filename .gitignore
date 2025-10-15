@@ -636,3 +636,5 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+staticfiles/
+media/
