@@ -1,25 +1,29 @@
-{% extends "account/base_manage.html" %}
+﻿{% extends "base.html" %}
 {% load allauth i18n %}
-{% block head_title %}
-    {% trans "Sign Out" %}
-{% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    {% element p %}
-        {% trans 'Are you sure you want to sign out?' %}
-    {% endelement %}
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
+<div id="logout-modal"
+     class="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div class="w-[90%] max-w-sm rounded-xl bg-[#111] p-6 text-white shadow-xl">
+        <h1 class="mb-3 text-center text-xl">{% trans "Sign Out" %}</h1>
+        <p class="mb-6 text-center text-[#aaa]">
+            {% trans "Are you sure you want to sign out?" %}
+        </p>
+
+        {% url 'account_logout' as action_url %}
+        <form method="post" action="{{ action_url }}">
             {% csrf_token %}
             {{ redirect_field }}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-{% endblock content %}
+            <div class="flex justify-center gap-4">
+                <button type="submit"
+                        class="bg-brandOrange rounded px-4 py-2 font-semibold text-black transition hover:bg-[#ff9c1a]">
+                    {% trans "Sign Out" %}
+                </button>
+                <a href="/" class="rounded border border-[#7f967f] px-4 py-2 text-[#7f967f] transition hover:bg-[#7f967f]/20">
+                    {% trans "Cancel" %}
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
