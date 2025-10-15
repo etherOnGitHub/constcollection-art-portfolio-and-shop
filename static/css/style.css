@@ -111,6 +111,16 @@ nav.navbar .navbar-brand img.logo {
     .footer { padding: 4rem 0; }
 }
 
+/* Ensure good spacing on smaller screens */
+@media (max-width: 991.98px) {
+    .about-two-col { flex-direction: column; }
+    .about-image-col { max-width: 100%; flex: none; }
+}
+
+/* Slight typographic tuning for about text */
+.about-text-col p { color: #4b4b4b; line-height: 1.75; }
+.about-text-col h2 { color: #5c4234; font-weight: 600; margin-bottom: .6rem; }
+
 @media (min-width: 992px) {
     .footer { padding: 5rem 0; }
 }
@@ -138,7 +148,6 @@ nav.navbar .navbar-brand img.logo {
     color: #222;
 }
 
-/* Make footer links slightly stronger for legibility */
 .footer a { font-weight: 600; }
 
 /* Navbar social icons  */
@@ -156,9 +165,9 @@ nav.navbar .navbar-brand img.logo {
 
 .social-link i { vertical-align: middle; }
 
-.social-link:hover { color: #111; transform: translateY(-2px); }
+.social-link:hover { 
+    color: #111; transform: translateY(-2px); }
 
-/* Add spacing between icons in nav */
 .social-icons-desktop .social-link { margin-left: 18px; }
 .social-icons-mobile .social-link { margin-left: 14px; }
 
@@ -171,4 +180,38 @@ nav.navbar .navbar-brand img.logo {
 
 @media (min-width: 768px) {
     .footer-list li { margin-bottom: 0.25rem; }
+}
+
+/* Styles for About Me section */
+.about-me {
+    background: transparent;
+}
+.about-me .section-title {
+    font-weight: 700;
+    margin-bottom: 7.25rem;
+    color: #2b2b2b;
+}
+.about-me .about-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #5c4234;
+    margin-bottom: .75rem;
+}
+.about-me .about-text {
+    color: #4b4b4b;
+    line-height: 1.75;
+    margin-bottom: .9rem;
+}
+
+.about-signature .signature-text {
+    font-style: normal;
+    color: #4b4b4b;
+}
+.about-signature .signature-name {
+    font-weight: 700;
+    color: #3b3b3b;
+}
+.signature-image {
+    display: inline-block;
+    height: auto;
 }
