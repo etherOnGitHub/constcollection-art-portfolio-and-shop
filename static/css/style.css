@@ -48,16 +48,47 @@ nav.navbar .navbar-brand img.logo {
 
 /* Footer logo sizing (keeps large but constrained) */
 .footer-logo-img {
-    max-width: 300px;
+        max-width: 300px;
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+/* Prevent footer logo overlapping on tablet sizes (e.g. iPad Pro) */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .footer-logo-img {
+        max-width: 200px; /* smaller on tablets to avoid overlapping text */
+    }
+    /* ensure columns align to top so long images don't overlap neighbouring content */
+    footer .row { align-items: flex-start; }
+}
+
+@media (max-width: 767.98px) {
+    /* on small screens allow logo to be a bit wider relative to column */
+    .footer-logo-img { max-width: 260px; }
 }
 
 /* Top banner and footer background color */
 .top-banner {
     background-color: #ECE3D3;
 }
+
+/* Navbar background color and link contrast */
+.navbar {
+    background-color: #fdfbf9;
+}
+
+.navbar .nav-link {
+    color: #333333;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #111111;
+}
+
+.navbar .navbar-brand { color: #333; }
 
 .footer {
     background-color: #f6f2eb;
@@ -108,4 +139,11 @@ nav.navbar .navbar-brand img.logo {
 
 @media (min-width: 992px) {
     .social-link { font-size: 1.6rem; }
+}
+
+/* Footer small spacing adjustments for mobile */
+.footer-list li { margin-bottom: 0.5rem; }
+
+@media (min-width: 768px) {
+    .footer-list li { margin-bottom: 0.25rem; }
 }
