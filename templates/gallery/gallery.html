@@ -58,12 +58,7 @@
       <h3>{{ artwork.title }}</h3>
       <p>Price: ${{ artwork.price }}</p>
       <a href="{% url 'artwork_detail' artwork.slug %}">See More</a>
-      {% if artwork.is_available %}
-        <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST" style="display:inline;">
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">Purchase</button>
-        </form>
-      {% else %}
+      {% if not artwork.is_available %}
         <span class="badge bg-secondary">Sold</span>
       {% endif %}
     </div>
