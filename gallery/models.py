@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 
 # Create your models here.
 class Tag(models.Model):
@@ -14,7 +15,7 @@ class Tag(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 class Artist(models.Model):
-    artist_id = models.AutoField(primary_key=True)
+    artist = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     bio = models.TextField(blank=True)
     profile_image = CloudinaryField('image', blank=True, null=True)
@@ -22,15 +23,10 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.name
-    
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
 
 class Artwork(models.Model):
     art_id = models.AutoField(primary_key=True)
-    artist_id = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='artworks')
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='artworks')
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True)
@@ -43,7 +39,11 @@ class Artwork(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True, related_name='artworks') 
 
-
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+        
     def __str__(self):
         return self.title
     
