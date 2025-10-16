@@ -15,10 +15,41 @@
   <select name="sort" id="sort" onchange="this.form.submit()">
     <option value="">Default</option>
     <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>Recently Uploaded</option>
-    <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low → High</option>
-    <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High → Low</option>
+    <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low \ High</option>
+    <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High \ Low</option>
   </select>
 </form>
+<!-- Art Entries Column -->
+<div class="gallery-container">
+  <div class="gallery-row">
+    {% for art in artworks %}
+      <div class="art-card">
+        <div class="image-frame">
+          {% if art.image_url and 'placeholder' in art.image_url.url %}
+             <img src="{% static 'images/hero.jpg' %}" alt="placeholder image">
+          {% elif art.image_url %}
+             <img src="{{ art.image_url.url }}" alt="{{ art.alt_text|default:art.title }}">
+          {% else %}
+             <img src="{% static 'images/hero.jpg' %}" alt="{{ art.title }}">
+          {% endif %}
+          {% if art.tags.all %}
+           <div class="image-badge">
+            {% for t in art.tags.all %}
+              <span>{{ t.name }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+          <div class="wishlist-heart">♡</div>
+        </div>
+        <div class="card-meta">
+          <p class="art-sub">{% if art.artist %}{{ art.artist.name }}{% endif %}</p>
+          <a class="art-title-link" href="{% url 'artwork_detail' art.slug %}"><h3 class="art-title">{{ art.title }}</h3></a>
+          <p class="art-price">From kr {{ art.price|floatformat:2 }}</p>
+          <p><a class="view-details-link" href="{% url 'artwork_detail' art.slug %}">View details -></a></p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 
 <div class="gallery">
   {% for artwork in artworks %}

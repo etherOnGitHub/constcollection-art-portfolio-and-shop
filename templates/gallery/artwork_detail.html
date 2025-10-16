@@ -2,18 +2,25 @@
 {% load static %}
 
 {% block content %}
-<h1>{{ artwork.title }}</h1>
-<img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
-<p>Artist: {{ artwork.artist.name }}</p>
-<p>£{{ artwork.price }}</p>
-<p>{{ artwork.description|safe }}</p>
+<div class="art-detail">
+  <div class="art-detail-media">
+    {% if artwork.image_url %}
+      <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text|default:artwork.title }}">
+    {% endif %}
+  </div>
+  <div class="art-detail-info">
+    <h1>{{ artwork.title }}</h1>
+    <p class="art-artist">{{ artwork.artist.name }}</p>
+    <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
+    <div class="art-description">{{ artwork.description|safe }}</div>
 
-<p>Tags:
-  {% for tag in artwork.tags.all %}
-    <span>{{ tag.name }}</span>
-  {% endfor %}
-</p>
+    {% if artwork.image_width and artwork.image_height %}
+      <p class="art-dimensions">Dimensions: {{ artwork.image_width }} × {{ artwork.image_height }} in</p>
+    {% endif %}
 
+    <p><a href="{% url 'gallery' %}">Back to gallery</a></p>
+  </div>
+</div>
 {% if artwork.is_available %}
     <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST">
         {% csrf_token %}
