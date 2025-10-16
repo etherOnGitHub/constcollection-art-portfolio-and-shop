@@ -8,22 +8,22 @@ body, button, input, textarea, select {
     /* base weight */
     }
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Xanh Mono", monospace
+    font-family: "Xanh Mono", monospace;
     }
 /* Navbar logo responsive sizing */
 .logo {
     max-height: 73px;
     height: auto;
-    display: block
+    display: block;
     }
 @media (min-width: 768px) {
     .logo {
-        max-height: 81px
+        max-height: 81px;
         }
     }
 @media (min-width: 992px) {
     .logo {
-        max-height: 97px
+        max-height: 97px;
         }
     }
 /* More specific navbar logo override to ensure correct sizing */
@@ -33,79 +33,79 @@ nav.navbar .navbar-brand img.logo {
     }
 @media (min-width: 768px) {
     nav.navbar .navbar-brand img.logo {
-        max-height: 97px !important
+        max-height: 97px !important;
         }
     }
 @media (min-width: 992px) {
     nav.navbar .navbar-brand img.logo {
-        max-height: 113px !important
+        max-height: 113px !important;
         }
     }
 /* Ensure clear rendering of logo image */
 nav.navbar .navbar-brand img.logo {
     width: auto !important;
     object-fit: contain !important;
-    display: block
+    display: block;
     }
 /* Footer logo sizing (keeps large but constrained) */
 .footer-logo-img {
     max-width: 300px;
     height: auto;
     display: block;
-    margin: 0 auto
+    margin: 0 auto;
     }
 @media (min-width: 768px) and (max-width: 1199.98px) {
     .footer-logo-img {
-        max-width: 200px
+        max-width: 200px;
         }
     footer .row {
-        align-items: flex-start
+        align-items: flex-start;
         }
     }
 @media (max-width: 767.98px) {
     .footer-logo-img {
-        max-width: 260px
+        max-width: 260px;
         }
     }
 .top-banner {
-    background-color: #ECE3D3
+    background-color: #ECE3D3;
     }
 /* Navbar styles */
 .navbar {
-    background-color: #fdfbf9
+    background-color: #fdfbf9;
     }
 .navbar .nav-link {
     color: #333;
     font-weight: 700;
-    letter-spacing: 0.12em
+    letter-spacing: 0.12em;
     }
 .navbar .nav-link:hover, .navbar .nav-link:focus {
     color: #111;
-    letter-spacing: 0.14em
+    letter-spacing: 0.14em;
     }
 .navbar .navbar-brand {
-    color: #333
+    color: #333;
     }
 .footer {
     background-color: #f6f2eb;
-    color: #2f2f2f
+    color: #2f2f2f;
     }
 .footer {
-    padding: 3rem 0
+    padding: 3rem 0;
     }
 @media (min-width: 768px) {
     .footer {
-        padding: 4rem 0
+        padding: 4rem 0;
         }
     }
 /* Ensure good spacing on smaller screens */
 @media (max-width: 991.98px) {
     .about-two-col {
-        flex-direction: column
+        flex-direction: column;
         }
     .about-image-col {
         max-width: 100%;
-        flex: none
+        flex: none;
         }
     }
 
@@ -150,27 +150,27 @@ nav.navbar .navbar-brand img.logo {
 }
 .about-text-col p {
     color: #4b4b4b;
-    line-height: 1.75
+    line-height: 1.75;
     }
 .about-text-col h2 {
     color: #5c4234;
     font-weight: 600;
-    margin-bottom: 0.6rem
+    margin-bottom: 0.6rem;
     }
 @media (min-width: 992px) {
     .footer {
-        padding: 5rem 0
+        padding: 5rem 0;
         }
     }
 .footer a {
     color: #3b3b3b;
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease
+    transition: color 0.15s ease, border-color 0.15s ease;
     }
 .footer a:hover, .footer a:focus {
     color: #111;
-    border-color: rgba(0, 0, 0, 0.08)
+    border-color: rgba(0, 0, 0, 0.08);
     }
 /* Footer heading style */
 .footer-heading {
@@ -180,10 +180,10 @@ nav.navbar .navbar-brand img.logo {
     text-transform: uppercase;
     font-size: 0.9rem;
     margin-bottom: 0.8rem;
-    color: #222
+    color: #222;
     }
 .footer a {
-    font-weight: 600
+    font-weight: 600;
     }
 /* Navbar social icons  */
 .social-link {
@@ -195,33 +195,33 @@ nav.navbar .navbar-brand img.logo {
     padding: 0 8px;
     background: transparent;
     border-radius: 0;
-    transition: color 0.18s ease, transform 0.12s ease
+    transition: color 0.18s ease, transform 0.12s ease;
     }
 .social-link i {
-    vertical-align: middle
+    vertical-align: middle;
     }
 .social-link:hover {
     color: #111;
-    transform: translatey(-2px)
+    transform: translatey(-2px);
     }
 .social-icons-desktop .social-link {
-    margin-left: 18px
+    margin-left: 18px;
     }
 .social-icons-mobile .social-link {
-    margin-left: 14px
+    margin-left: 14px;
     }
 @media (min-width: 992px) {
     .social-link {
-        font-size: 1.6rem
+        font-size: 1.6rem;
         }
     }
 /* Footer small spacing adjustments for mobile */
 .footer-list li {
-    margin-bottom: 0.5rem
+    margin-bottom: 0.5rem;
     }
 @media (min-width: 768px) {
     .footer-list li {
-        margin-bottom: 0.25rem
+        margin-bottom: 0.25rem;
         }
     }
 /* Styles for About Me section */
@@ -231,30 +231,30 @@ nav.navbar .navbar-brand img.logo {
 .about-me .section-title {
     font-weight: 700;
     margin-bottom: 7.25rem;
-    color: #2b2b2b
+    color: #2b2b2b;
     }
 .about-me .about-subtitle {
     font-size: 1.25rem;
     font-weight: 600;
     color: #5c4234;
-    margin-bottom: 0.75rem
+    margin-bottom: 0.75rem;
     }
 .about-me .about-text {
     color: #4b4b4b;
     line-height: 1.75;
-    margin-bottom: 0.9rem
+    margin-bottom: 0.9rem;
     }
 .about-signature .signature-text {
     font-style: normal;
-    color: #4b4b4b
+    color: #4b4b4b;
     }
 .about-signature .signature-name {
     font-weight: 700;
-    color: #3b3b3b
+    color: #3b3b3b;
     }
 .signature-image {
     display: inline-block;
-    height: auto
+    height: auto;
     }
 
 /* Tablet styles (<= 991.98px) - keep desktop unchanged above this breakpoint */
@@ -342,7 +342,7 @@ nav.navbar .navbar-brand img.logo {
     background-image: url(../images/hero.jpg);
     background-position: center center;
     background-size: cover;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
     }
 .hero__overlay {
     position: absolute;
@@ -356,7 +356,7 @@ nav.navbar .navbar-brand img.logo {
     /* keep content above overlay */
     z-index: 2;
     padding: 3rem 1rem;
-    height: 100%
+    height: 100%;
     }
 .hero__title {
     color: #fff;
@@ -368,39 +368,39 @@ nav.navbar .navbar-brand img.logo {
     max-width: 1100px;
     margin: 0 auto;
     line-height: 1.15;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45)
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
     }
 @media (min-width: 576px) {
     .hero__title {
-        font-size: 1.3rem
+        font-size: 1.3rem;
         }
     }
 @media (min-width: 768px) {
     .hero__title {
-        font-size: 1.6rem
+        font-size: 1.6rem;
         }
     .hero {
-        height: calc(100vh - 140px)
+        height: calc(100vh - 140px);
         }
     }
 @media (min-width: 992px) {
     .hero__title {
-        font-size: 2rem
+        font-size: 2rem;
         }
     .hero {
-        height: calc(100vh - 120px)
+        height: calc(100vh - 120px);
         }
     }
 @media (min-width: 1200px) {
     .hero__title {
-        font-size: 2.6rem
+        font-size: 2.6rem;
         }
     }
 /* Ensure hero image remains visually pleasing on very short viewports */
 @media (max-height: 600px) {
     .hero {
         min-height: 420px;
-        height: 55vh
+        height: 55vh;
         }
     }
 

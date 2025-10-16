@@ -40,8 +40,16 @@
 
     <!-- Top Banner -->
     <div class="top-banner">
-        <div class="container-fluid">
-            <p class="mb-0 py-2 text-center">Soft lines, strong stories • Every piece tells a truth</p>
+        <div class="container-fluid d-flex align-items-center justify-content-center position-relative py-2">
+            <!-- centered line -->
+            <p class="w-100 mb-0 text-center">Soft lines, strong stories • Every piece tells a truth</p>
+
+            <!-- right-aligned status -->
+            {% if user.is_authenticated %}
+            <p class="small position-absolute end-0 mb-0 me-3 text-end">Signed in as {{ user }}.</p>
+            {% else %}
+            <p class="small position-absolute d-none end-0 mb-0 me-3 text-end">Not signed in — sign up to follow new work.</p>
+            {% endif %}
         </div>
     </div>
 
@@ -81,7 +89,7 @@
                            href="{% url 'home' %}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if request.path == gallery_url %}active{% endif %}" aria-current="page"
                            href="{% url 'gallery' %}#">GALLERY</a>
                     </li>
                     <li class="nav-item">
@@ -89,7 +97,7 @@
                            href="{% url 'about' %}">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if request.path == faq_url %}active{% endif %}" aria-current="page"
                            href="{% url 'home' %}#">FAQ</a>
                     </li>
                     <li class="nav-item">
@@ -140,12 +148,7 @@
     </div>
 
     <main class="main-bg flex-shrink-0">
-        {% if user.is_authenticated %}
-        <p class="m-3 text-end">Signed in as {{ user }} — explore the portfolio.</p>
-        {% else %}
-        <p class="m-3 text-end">Not signed in — sign up to follow new work.</p>
-        {% endif %}
-
+      
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
