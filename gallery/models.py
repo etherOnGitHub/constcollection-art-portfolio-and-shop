@@ -31,7 +31,7 @@ class Artist(models.Model):
 
 class Artwork(models.Model):
     art_id = models.AutoField(primary_key=True)
-    artist_id = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='artworks')
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='artworks')
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True)
