@@ -10,7 +10,7 @@
   </div>
   <div class="art-detail-info">
     <h1>{{ artwork.title }}</h1>
-    <p class="art-artist">{{ artwork.artist.name }}</p>
+    <p class="art-artist">{{ artist.name }}</p>
     <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
     <div class="art-description">{{ artwork.description|safe }}</div>
 
