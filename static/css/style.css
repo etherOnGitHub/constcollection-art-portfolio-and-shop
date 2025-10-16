@@ -403,3 +403,12 @@ nav.navbar .navbar-brand img.logo {
         height: 55vh
         }
     }
+
+.modal-backdrop.show {
+    backdrop-filter: blur(10px);
+    background: radial-gradient( circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.4) 100% );
+    position: fixed;
+    pointer-events: none;
+    height: 200vh;
+    width: 200vw;
+}
