@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<form method="get">
+  <label for="tag">Filter by tag:</label>
+  <select name="tag" id="tag" onchange="this.form.submit()">
+    <option value="">All</option>
+    {% for tag in tags %}
+      <option value="{{ tag.slug }}" {% if tag.slug == selected_tag %}selected{% endif %}>{{ tag.name }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="sort">Sort by:</label>
+  <select name="sort" id="sort" onchange="this.form.submit()">
+    <option value="">Default</option>
+    <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>Recently Uploaded</option>
+    <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low → High</option>
+    <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High → Low</option>
+  </select>
+</form>
+
+<div class="gallery">
+  {% for artwork in artworks %}
+    <div class="art-item">
+      <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
+      <h3>{{ artwork.title }}</h3>
+      <p>Price: ${{ artwork.price }}</p>
+      <a href="{% url 'artwork_detail' artwork.slug %}">See More</a>
+    </div>
+  {% empty %}
+    <p>No artworks found.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
