@@ -7,7 +7,7 @@ from .models import Artist, Artwork, Tag
 @admin.register(Artwork)
 class ArtworkAdmin(SummernoteModelAdmin):
     list_display = ('thumbnail_list', 'title', 'artist', 'price', 'is_available', 'created_at')
-    list_filter = ('is_available', 'artist', 'created_at')
+    list_filter = ('is_available', 'artist', 'created_at', 'tags')
     search_fields = ('title', 'artist__name')
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('description',)
