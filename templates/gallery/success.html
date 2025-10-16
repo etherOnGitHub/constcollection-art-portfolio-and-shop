@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Thank you for your purchase!</h2>
+  <p>Artwork: {{ artwork_title }}</p>
+  <p>Payment reference: {{ session_id }}</p>
+  <p>Delivery details: {{ delivery_details }}</p>
+  <a href="{% url 'gallery' %}">Back to gallery</a>
+{% endblock %}

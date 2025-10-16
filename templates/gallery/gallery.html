@@ -50,6 +50,26 @@
       </div>
     {% endfor %}
   </div>
+
+<div class="gallery">
+  {% for artwork in artworks %}
+    <div class="art-item">
+      <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
+      <h3>{{ artwork.title }}</h3>
+      <p>Price: ${{ artwork.price }}</p>
+      <a href="{% url 'artwork_detail' artwork.slug %}">See More</a>
+      {% if artwork.is_available %}
+        <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Purchase</button>
+        </form>
+      {% else %}
+        <span class="badge bg-secondary">Sold</span>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No artworks found.</p>
+  {% endfor %}
 </div>
 
 {% endblock %}
