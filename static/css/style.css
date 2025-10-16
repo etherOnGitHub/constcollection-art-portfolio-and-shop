@@ -620,3 +620,9 @@ nav.navbar .navbar-brand img.logo {
   font-weight: 600;
   margin-top: 0.6rem;
 }
+
+.cancel-container {
+  border-radius: 12px;
+  background: #faf9f6;
+  margin-bottom: 4rem;
+}
