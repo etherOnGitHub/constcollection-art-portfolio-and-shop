@@ -1,232 +1,405 @@
 h1 {
-    color: #333;
-}
-
+    color: #333
+    }
 /* Site font: Xanh Mono (imported from Google Fonts) */
 body, button, input, textarea, select {
-    font-family: 'Xanh Mono', monospace;
-    font-weight: 400; /* base weight */
-}
-
+    font-family: "Xanh Mono", monospace;
+    font-weight: 400;
+    /* base weight */
+    }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Xanh Mono', monospace;
-}
-
+    font-family: "Xanh Mono", monospace
+    }
 /* Navbar logo responsive sizing */
 .logo {
     max-height: 73px;
     height: auto;
-    display: block;
-}
-
+    display: block
+    }
 @media (min-width: 768px) {
     .logo {
-        max-height: 81px;
+        max-height: 81px
+        }
     }
-}
-
 @media (min-width: 992px) {
     .logo {
-        max-height: 97px;
+        max-height: 97px
+        }
     }
-}
-
 /* More specific navbar logo override to ensure correct sizing */
 nav.navbar .navbar-brand img.logo {
     max-height: 81px !important;
-    height: auto !important;
-}
-
+    height: auto !important
+    }
 @media (min-width: 768px) {
     nav.navbar .navbar-brand img.logo {
-        max-height: 97px !important;
+        max-height: 97px !important
+        }
     }
-}
-
 @media (min-width: 992px) {
     nav.navbar .navbar-brand img.logo {
-        max-height: 113px !important;
+        max-height: 113px !important
+        }
     }
-}
-
 /* Ensure clear rendering of logo image */
 nav.navbar .navbar-brand img.logo {
     width: auto !important;
     object-fit: contain !important;
-    display: block;
-}
-
+    display: block
+    }
 /* Footer logo sizing (keeps large but constrained) */
 .footer-logo-img {
-        max-width: 300px;
+    max-width: 300px;
     height: auto;
     display: block;
-    margin: 0 auto;
-}
+    margin: 0 auto
+    }
 @media (min-width: 768px) and (max-width: 1199.98px) {
     .footer-logo-img {
-        max-width: 200px; 
+        max-width: 200px
+        }
+    footer .row {
+        align-items: flex-start
+        }
     }
-    
-    footer .row { align-items: flex-start; }
-}
-
 @media (max-width: 767.98px) {
-    
-    .footer-logo-img { max-width: 260px; }
-}
+    .footer-logo-img {
+        max-width: 260px
+        }
+    }
 .top-banner {
-    background-color: #ECE3D3;
-}
-
+    background-color: #ECE3D3
+    }
 /* Navbar styles */
 .navbar {
-    background-color: #fdfbf9;
-}
-
+    background-color: #fdfbf9
+    }
 .navbar .nav-link {
-    color: #333333;
-    font-weight: 700; /* increased for contrast */
-    letter-spacing: 0.12em; /* increased tracking for navbar pages */
-}
-
-.navbar .nav-link:hover,
-.navbar .nav-link:focus {
-    color: #111111;
-    letter-spacing: 0.14em;
-}
-
-.navbar .navbar-brand { color: #333; }
-
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 0.12em
+    }
+.navbar .nav-link:hover, .navbar .nav-link:focus {
+    color: #111;
+    letter-spacing: 0.14em
+    }
+.navbar .navbar-brand {
+    color: #333
+    }
 .footer {
     background-color: #f6f2eb;
-    color: #2f2f2f; 
-}
-
+    color: #2f2f2f
+    }
 .footer {
-    padding: 3rem 0; 
-}
-
+    padding: 3rem 0
+    }
 @media (min-width: 768px) {
-    .footer { padding: 4rem 0; }
-}
-
+    .footer {
+        padding: 4rem 0
+        }
+    }
 /* Ensure good spacing on smaller screens */
 @media (max-width: 991.98px) {
-    .about-two-col { flex-direction: column; }
-    .about-image-col { max-width: 100%; flex: none; }
+    .about-two-col {
+        flex-direction: column
+        }
+    .about-image-col {
+        max-width: 100%;
+        flex: none
+        }
+    }
+
+/* iPad Pro specific: stack image under text at widths around 1024px
+   Keep desktop (>1199.98px and >=992px) unchanged. Use a narrow range
+   to target tablets like iPad Pro. */
+@media (min-width: 992px) and (max-width: 1100px) {
+    /* Force the about row to stack vertically so image sits under text */
+    section#about article.row.align-items-center {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Make the text column full width */
+    section#about .col-lg-6:first-child {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Place the image column below and center the image */
+    section#about .col-lg-6:last-child {
+        width: 100%;
+        max-width: 100%;
+        text-align: center; /* center image */
+        margin-top: 1.25rem;
+    }
+
+    section#about .artist-image {
+        max-width: 420px; /* reasonable size for tablet */
+        width: 70%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    /* Tighten spacing of section title on tablet */
+    .about-me .section-title {
+        margin-bottom: 3.25rem;
+    }
 }
-
-/* Slight typographic tuning for about text */
-.about-text-col p { color: #4b4b4b; line-height: 1.75; }
-.about-text-col h2 { color: #5c4234; font-weight: 600; margin-bottom: .6rem; }
-
+.about-text-col p {
+    color: #4b4b4b;
+    line-height: 1.75
+    }
+.about-text-col h2 {
+    color: #5c4234;
+    font-weight: 600;
+    margin-bottom: 0.6rem
+    }
 @media (min-width: 992px) {
-    .footer { padding: 5rem 0; }
-}
-
+    .footer {
+        padding: 5rem 0
+        }
+    }
 .footer a {
-    color: #3b3b3b; 
+    color: #3b3b3b;
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: color .15s ease, border-color .15s ease;
-}
-
-.footer a:hover,
-.footer a:focus {
+    transition: color 0.15s ease, border-color 0.15s ease
+    }
+.footer a:hover, .footer a:focus {
     color: #111;
-    border-color: rgba(0,0,0,0.08); 
-}
-
+    border-color: rgba(0, 0, 0, 0.08)
+    }
 /* Footer heading style */
 .footer-heading {
-    font-weight: 700; /* stronger heading weight for contrast */
-    letter-spacing: .06em;
+    font-weight: 700;
+    /* stronger heading weight for contrast */
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: .9rem;
-    margin-bottom: .8rem;
-    color: #222;
-}
-
-.footer a { font-weight: 600; }
-
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    color: #222
+    }
+.footer a {
+    font-weight: 600
+    }
 /* Navbar social icons  */
 .social-link {
-    color: #6b6b6b; 
+    color: #6b6b6b;
     font-size: 1.45rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0 8px; 
+    padding: 0 8px;
     background: transparent;
     border-radius: 0;
-    transition: color .18s ease, transform .12s ease;
-}
-
-.social-link i { vertical-align: middle; }
-
-.social-link:hover { 
-    color: #111; transform: translateY(-2px); }
-
-.social-icons-desktop .social-link { margin-left: 18px; }
-.social-icons-mobile .social-link { margin-left: 14px; }
-
+    transition: color 0.18s ease, transform 0.12s ease
+    }
+.social-link i {
+    vertical-align: middle
+    }
+.social-link:hover {
+    color: #111;
+    transform: translatey(-2px)
+    }
+.social-icons-desktop .social-link {
+    margin-left: 18px
+    }
+.social-icons-mobile .social-link {
+    margin-left: 14px
+    }
 @media (min-width: 992px) {
-    .social-link { font-size: 1.6rem; }
-}
-
+    .social-link {
+        font-size: 1.6rem
+        }
+    }
 /* Footer small spacing adjustments for mobile */
-.footer-list li { margin-bottom: 0.5rem; }
-
+.footer-list li {
+    margin-bottom: 0.5rem
+    }
 @media (min-width: 768px) {
-    .footer-list li { margin-bottom: 0.25rem; }
-}
-
+    .footer-list li {
+        margin-bottom: 0.25rem
+        }
+    }
 /* Styles for About Me section */
 .about-me {
-    background: transparent;
-}
+    background: transparent
+    }
 .about-me .section-title {
     font-weight: 700;
     margin-bottom: 7.25rem;
-    color: #2b2b2b;
-}
+    color: #2b2b2b
+    }
 .about-me .about-subtitle {
     font-size: 1.25rem;
     font-weight: 600;
     color: #5c4234;
-    margin-bottom: .75rem;
-}
+    margin-bottom: 0.75rem
+    }
 .about-me .about-text {
     color: #4b4b4b;
     line-height: 1.75;
-    margin-bottom: .9rem;
-}
-
+    margin-bottom: 0.9rem
+    }
 .about-signature .signature-text {
     font-style: normal;
-    color: #4b4b4b;
-}
+    color: #4b4b4b
+    }
 .about-signature .signature-name {
     font-weight: 700;
-    color: #3b3b3b;
-}
+    color: #3b3b3b
+    }
 .signature-image {
     display: inline-block;
-    height: auto;
+    height: auto
+    }
+
+/* Tablet styles (<= 991.98px) - keep desktop unchanged above this breakpoint */
+@media (max-width: 991.98px) {
+    .about-me .section-title {
+        margin-bottom: 3.5rem; /* reduce large desktop spacing */
+        font-size: 1.6rem;
+    }
+
+    .about-me .about-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .about-me .about-text {
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
+    /* Image column should be centered and a bit smaller on tablets */
+    .artist-image {
+        max-width: 360px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .about-content {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
 }
 
-/* modals for login */
+/* Mobile styles (<= 767.98px) */
+@media (max-width: 767.98px) {
+    /* Stack content with tighter spacing */
+    .about-me {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
 
-.modal {
-    display: none;
-}
+    .about-me .section-title {
+        margin-bottom: 2.5rem;
+        font-size: 1.35rem;
+    }
 
-.modal-backdrop.show {
-    backdrop-filter: blur(10px);
-    background: radial-gradient( circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.4) 100% );
-    position: fixed;
-    pointer-events: none;
-    height: 200vh;
-    width: 200vw;
+    .about-me .about-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-me .about-text {
+        font-size: 0.96rem;
+        line-height: 1.6;
+        margin-bottom: 0.85rem;
+    }
+
+    /* Ensure signature image scales nicely on small screens */
+    .signature-image {
+        max-width: 6.5rem;
+        width: 45%;
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    /* Make footer signature elements align left on very small screens */
+    .about-signature {
+        text-align: left;
+    }
+
+    /* Center artist image and reduce size for small phones */
+    .artist-image {
+        max-width: 300px;
+        margin: 0 auto 1rem auto;
+        display: block;
+    }
 }
+/* Hero section - full viewport background image with gradient overlay */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 75vh;
+    /* fallback */
+    height: calc(100vh - 160px);
+    /* allow room for top banner + nav on large screens */
+    display: block;
+    background-image: url(../images/hero.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat
+    }
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0 */
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.35) 0%, rgba(18, 18, 18, 0.35) 50%, rgba(255, 255, 255, 0.05) 100%);
+    /* subtle darkening toward top for contrast with light text */
+    }
+.hero__content {
+    position: relative;
+    /* keep content above overlay */
+    z-index: 2;
+    padding: 3rem 1rem;
+    height: 100%
+    }
+.hero__title {
+    color: #fff;
+    font-family: "Instrument Sans", "Xanh Mono", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 1.45rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    line-height: 1.15;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45)
+    }
+@media (min-width: 576px) {
+    .hero__title {
+        font-size: 1.3rem
+        }
+    }
+@media (min-width: 768px) {
+    .hero__title {
+        font-size: 1.6rem
+        }
+    .hero {
+        height: calc(100vh - 140px)
+        }
+    }
+@media (min-width: 992px) {
+    .hero__title {
+        font-size: 2rem
+        }
+    .hero {
+        height: calc(100vh - 120px)
+        }
+    }
+@media (min-width: 1200px) {
+    .hero__title {
+        font-size: 2.6rem
+        }
+    }
+/* Ensure hero image remains visually pleasing on very short viewports */
+@media (max-height: 600px) {
+    .hero {
+        min-height: 420px;
+        height: 55vh
+        }
+    }
