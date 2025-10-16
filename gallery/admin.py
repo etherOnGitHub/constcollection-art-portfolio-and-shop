@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
+from django.utils.html import format_html
 from .models import Artist, Artwork, Tag
 # Register your models here.
 @admin.register(Artwork)
@@ -10,6 +11,13 @@ class ArtworkAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('description',)
 
+    def thumbnail(self, obj):
+        if obj.image_url:
+            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover; border-radius: 4px;" />', obj.image_url.url)
+        return "-"
+    
+    thumbnail.short_description = 'Thumbnail'
+    thumbnail.admin_order_field = 'image_url'
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
     list_display = ('name', 'contact')
