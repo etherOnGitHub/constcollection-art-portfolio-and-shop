@@ -50,21 +50,4 @@
       </div>
     {% endfor %}
   </div>
-
-<!-- <div class="gallery">
-  {% for artwork in artworks %}
-    <div class="art-item">
-      <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
-      <h3>{{ artwork.title }}</h3>
-      <p>Price: ${{ artwork.price }}</p>
-      <a href="{% url 'artwork_detail' artwork.slug %}">See More</a>
-      {% if not artwork.is_available %}
-        <span class="badge bg-secondary">Sold</span>
-      {% endif %}
-    </div>
-  {% empty %}
-    <p>No artworks found.</p>
-  {% endfor %}
-</div> -->
-
 {% endblock %}
