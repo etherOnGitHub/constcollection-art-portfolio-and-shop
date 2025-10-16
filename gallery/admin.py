@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from .models import Artist, Artwork
 # Register your models here.
 
 @admin.register(Artist)
