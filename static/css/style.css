@@ -74,6 +74,13 @@ nav.navbar .navbar-brand img.logo {
 .navbar {
     background-color: #fdfbf9;
     }
+    .navbar a {
+        color: #333;
+    }
+    .navbar a:hover {
+        color: #2f2f2f;
+        transform: translateY(-2px);
+    }
 .navbar .nav-link {
     color: #333;
     font-weight: 700;
@@ -413,6 +420,42 @@ nav.navbar .navbar-brand img.logo {
     width: 200vw;
 }
 
+#id_remember {
+    border-radius: 0;
+    accent-color: #000;
+}
+
+#id_remember:checked {
+    background-color: #000;
+    border-color: #000;
+    }
+
+/* Global form field styling */
+input.form-control,
+textarea.form-control,
+select.form-control {
+    background-color: #fff !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+    /* Focus state override */
+    input.form-control:focus,
+    textarea.form-control:focus,
+    select.form-control:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #000 !important;
+        background-color: #fdfbf9 !important;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+/* Checkboxes & radios */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #000 !important;
 /* Gallery grid and card styles */
 .gallery-container {
   padding: 2.5rem 1rem;
