@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>{{ artwork.title }}</h1>
+<img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
+<p>Artist: {{ artwork.artist.name }}</p>
+<p>Price: £{{ artwork.price }}</p>
+<p>Description: {{ artwork.description }}</p>
+
+<p>Tags:
+  {% for tag in artwork.tags.all %}
+    <span>{{ tag.name }}</span>
+  {% endfor %}
+</p>
+
+<a href="{% url 'gallery' %}">Back to gallery</a>
+{% endblock %}
