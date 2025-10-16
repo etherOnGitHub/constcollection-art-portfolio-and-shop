@@ -5,11 +5,12 @@ from cloudinary.utils import cloudinary_url
 from .models import Artist, Artwork, Tag
 # Register your models here.
 @admin.register(Artwork)
-class ArtworkAdmin(admin.ModelAdmin):
+class ArtworkAdmin(SummernoteModelAdmin):
     list_display = ('thumbnail_list', 'title', 'artist', 'price', 'is_available', 'created_at')
     list_filter = ('is_available', 'artist', 'created_at')
     search_fields = ('title', 'artist__name')
     prepopulated_fields = {'slug': ('title',)}
+    summernote_fields = ('description',)
     
     readonly_fields = ('thumbnail_preview',)
 
