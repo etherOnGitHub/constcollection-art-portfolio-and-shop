@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Artist, Artwork
+from .models import Artist, Artwork, Tag
 # Register your models here.
 
 @admin.register(Artist)
@@ -14,3 +14,8 @@ class ArtworkAdmin(admin.ModelAdmin):
     list_filter = ('is_available', 'artist', 'created_at')
     search_fields = ('title', 'artist__name')
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
