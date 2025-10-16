@@ -14,6 +14,7 @@ class ArtworkAdmin(admin.ModelAdmin):
     list_filter = ('is_available', 'artist', 'created_at')
     search_fields = ('title', 'artist__name')
     prepopulated_fields = {'slug': ('title',)}
+    filter_horizontal = ('tags',) 
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
