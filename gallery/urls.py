@@ -9,4 +9,6 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('gallery/<slug:slug>/', views.artwork_detail, name='artwork_detail'),
     path('buy/<int:art_id>/', views.create_checkout_session, name='create_checkout_session'),
+    path('success/', views.success, name='success'),
+    path('cancel/', views.cancel, name='cancel'),
 ]

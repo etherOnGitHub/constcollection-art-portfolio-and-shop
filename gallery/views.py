@@ -52,11 +52,10 @@ def artwork_detail(request, slug):
 
 
 def create_checkout_session(request, art_id):
-    artwork = get_object_or_404(
-        Artwork,
-        pk=art_id,
-        is_available=True
-    )
+    artwork = get_object_or_404(Artwork, pk=art_id, is_available=True)
+    quantity = 1
+    if artwork.is_print and artwork.inventory_count > 1:
+        quantity = artwork.inventory_count  # Or let user select quantity in future
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
@@ -68,12 +67,29 @@ def create_checkout_session(request, art_id):
                 },
                 'unit_amount': int(artwork.price * 100),
             },
-            'quantity': 1,
+            'quantity': quantity,
         }],
         mode='payment',
-        success_url=request.build_absolute_uri(
-            '/success?session_id={CHECKOUT_SESSION_ID}'
-        ),
+        success_url=request.build_absolute_uri('/success?session_id={CHECKOUT_SESSION_ID}'),
         cancel_url=request.build_absolute_uri('/cancel'),
     )
     return redirect(session.url)
+
+
+def success(request):
+    session_id = request.GET.get('session_id')
+    # You may need to retrieve artwork and delivery info here
+    # Example:
+    # artwork = Artwork.objects.get(pk=art_id)
+    # delivery_details = ... # If you collect them
+
+    return render(request, 'gallery/success.html', {
+        'session_id': session_id,
+        # 'artwork_title': artwork.title,
+        # 'delivery_details': delivery_details,
+    })
+
+
+def cancel(request):
+    # Redirect to artwork detail or show a cancellation message
+    return render(request, 'gallery/cancel.html')

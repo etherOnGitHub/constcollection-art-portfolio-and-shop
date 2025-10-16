@@ -39,6 +39,7 @@ class Artwork(models.Model):
     inventory_count = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True, related_name='artworks') 
+    is_print = models.BooleanField(default=False)  # Add this line
 
     def save(self, *args, **kwargs):
         if not self.slug:
