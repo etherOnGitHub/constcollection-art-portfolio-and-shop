@@ -456,6 +456,8 @@ select.form-control {
 input[type="checkbox"],
 input[type="radio"] {
     accent-color: #000 !important;
+}
+
 /* Gallery grid and card styles */
 .gallery-container {
   padding: 2.5rem 1rem;
@@ -665,9 +667,9 @@ input[type="radio"] {
 }
 
 .cancel-container {
-  background: #faf9f6;
-  margin-bottom: 4rem;
-  max-width: 400px;
+  background: #faf9f6 !important;
+  margin-bottom: 4rem !important; 
+  max-width: 400px !important;
 }
 
 .cancel-container,

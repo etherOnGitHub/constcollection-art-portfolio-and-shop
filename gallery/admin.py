@@ -49,7 +49,7 @@ class ArtworkAdmin(SummernoteModelAdmin):
     thumbnail_preview.short_description = "Current Thumbnail"
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    list_display = ('name', 'contact')
+    list_display = ('name', 'contact_email', 'contact_phone')
     search_fields = ('name',)
 
 @admin.register(Tag)
