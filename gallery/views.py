@@ -56,6 +56,9 @@ def create_checkout_session(request, art_id):
     quantity = 1
     if artwork.is_print and artwork.inventory_count > 1:
         quantity = artwork.inventory_count  # Or let user select quantity in future
+    success_url = request.build_absolute_uri(
+        f'/success?session_id={{CHECKOUT_SESSION_ID}}&art_id={artwork.art_id}'
+    )
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=[{
@@ -70,7 +73,7 @@ def create_checkout_session(request, art_id):
             'quantity': quantity,
         }],
         mode='payment',
-        success_url=request.build_absolute_uri('/success?session_id={CHECKOUT_SESSION_ID}'),
+        success_url=success_url,
         cancel_url=request.build_absolute_uri('/cancel'),
     )
     return redirect(session.url)
@@ -78,14 +81,21 @@ def create_checkout_session(request, art_id):
 
 def success(request):
     session_id = request.GET.get('session_id')
-    # You may need to retrieve artwork and delivery info here
-    # Example:
-    # artwork = Artwork.objects.get(pk=art_id)
-    # delivery_details = ... # If you collect them
+    art_id = request.GET.get('art_id')
+    artwork = None
+    artwork_title = ""
+    artwork_image_url = ""
+    if art_id:
+        artwork = get_object_or_404(Artwork, pk=art_id)
+        artwork_title = artwork.title
+        artwork_image_url = artwork.image_url.url
+
+    # delivery_details = ... # Add your logic here
 
     return render(request, 'gallery/success.html', {
         'session_id': session_id,
-        # 'artwork_title': artwork.title,
+        'artwork_title': artwork_title,
+        'artwork_image_url': artwork_image_url,
         # 'delivery_details': delivery_details,
     })
 

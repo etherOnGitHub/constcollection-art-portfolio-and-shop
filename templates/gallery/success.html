@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Thank you for your purchase!</h2>
-  <p>Artwork: {{ artwork_title }}</p>
-  <p>Payment reference: {{ session_id }}</p>
-  <p>Delivery details: {{ delivery_details }}</p>
-  <a href="{% url 'gallery' %}">Back to gallery</a>
+  <div class="cancel-container card shadow-sm mx-auto mt-5 p-4 text-center">
+    <h2 class="card-title mb-3">Thank you for your purchase!</h2>
+    <h3 class="mb-3">{{ artwork_title }}</h3>
+    {% if artwork_image_url %}
+      <img src="{{ artwork_image_url }}" alt="{{ artwork_title }}" class="mb-4" style="max-width: 300px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 0;">
+    {% endif %}
+    <p class="mb-2"><strong>Payment reference:</strong> {{ session_id }}</p>
+    <p class="mb-4"><strong>Delivery details:</strong> {{ delivery_details }}</p>
+    <a href="{% url 'gallery' %}" class="btn btn-outline-secondary">Back to gallery</a>
+  </div>
 {% endblock %}
