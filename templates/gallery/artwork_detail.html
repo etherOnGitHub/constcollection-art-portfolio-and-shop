@@ -14,5 +14,14 @@
   {% endfor %}
 </p>
 
+{% if artwork.is_available %}
+    <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Buy Now</button>
+    </form>
+{% else %}
+    <span class="badge bg-secondary">Sold</span>
+{% endif %}
+
 <a href="{% url 'gallery' %}">Back to gallery</a>
 {% endblock %}
