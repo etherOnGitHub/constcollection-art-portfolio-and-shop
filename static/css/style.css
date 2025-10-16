@@ -622,7 +622,18 @@ nav.navbar .navbar-brand img.logo {
 }
 
 .cancel-container {
-  border-radius: 12px;
   background: #faf9f6;
   margin-bottom: 4rem;
+  max-width: 400px;
+}
+
+.cancel-container,
+.card,
+.art-detail,
+.art-detail-media,
+.art-detail-info,
+.btn,
+.badge,
+img {
+  border-radius: 0 !important;
 }
