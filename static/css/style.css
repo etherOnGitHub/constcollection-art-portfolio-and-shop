@@ -412,3 +412,211 @@ nav.navbar .navbar-brand img.logo {
     height: 200vh;
     width: 200vw;
 }
+
+/* Gallery grid and card styles */
+.gallery-container {
+  padding: 2.5rem 1rem;
+}
+
+.gallery-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.art-card {
+  background: #f7f3ee; /* soft cream */
+  padding: 2.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+}
+
+.image-frame {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2.8rem 2.5rem;
+  box-shadow: 0 12px 20px rgba(21, 21, 21, 0.06);
+  border-radius: 2px;
+  position: relative;
+  text-align: center;
+  min-height: 320px;
+}
+
+.image-frame img {
+  max-width: 66%;
+  height: 280px;
+  max-height: 280px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: transparent;
+  color: #6b6b6b;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wishlist-heart {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b6b6b;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.card-meta {
+  margin-top: 1.2rem;
+}
+
+.art-title {
+  font-weight: 700;
+  color: #1f1f1f;
+  margin: 0 0 0.35rem 0;
+}
+
+.art-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.art-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.art-title-link {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.art-title-link .art-title {
+  text-decoration: none !important;
+}
+
+.art-title-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.art-sub {
+  color: #6b6b6b;
+  font-weight: 600;
+  margin: 0 0 0.2rem 0;
+}
+
+.art-price {
+  color: #2b2b2b;
+  font-weight: 700;
+  margin-top: 0.6rem;
+}
+
+/* Responsive gallery grid */
+@media (max-width: 1199.98px) {
+  .gallery-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .gallery-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .gallery-row {
+    grid-template-columns: 1fr;
+  }
+
+  .image-frame {
+    min-height: 240px;
+    padding: 2rem 1.25rem;
+  }
+
+  .image-frame img {
+    max-width: 80%;
+    height: 200px;
+    max-height: 200px;
+  }
+}
+
+/* Artwork detail page */
+.art-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding: 2rem 1rem;
+}
+
+.art-detail-media img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.art-detail-info h1 {
+  margin-top: 0;
+}
+
+.art-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.art-artist {
+  color: #6b6b6b;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  background: #fff;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  margin-right: 0.35rem;
+}
+
+@media (max-width: 991.98px) {
+  .art-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+.view-details-link {
+  display: inline-block;
+  color: #1f1f1f;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.view-details-link:hover {
+  text-decoration: underline;
+}
+
+.art-dimensions {
+  color: #6b6b6b;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
