@@ -460,6 +460,12 @@ nav.navbar .navbar-brand img.logo {
     }
 }
 
+/* Back to gallery link */
+.back-to-gallery {
+    color: #000;
+    text-decoration: none;
+}
+
 .room-quote-grid {
     position: absolute;
     top: 6%;
