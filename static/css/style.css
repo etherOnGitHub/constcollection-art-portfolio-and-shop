@@ -399,6 +399,67 @@ nav.navbar .navbar-brand img.logo {
     max-width: 100%;
 }
 
+/* Artwork detail styles (readable/indented) */
+.art-detail {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.art-detail-media {
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, .04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.art-detail-media img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.art-detail-info h1 {
+    font-family: "Instrument Sans", "Xanh Mono", sans-serif;
+    font-weight: 700;
+    margin: .2rem 0;
+}
+
+.art-artist {
+    color: #5c4234;
+    font-weight: 600;
+}
+
+.art-price {
+    font-weight: 800;
+    margin: .5rem 0;
+}
+
+.btn-purchase {
+    background: #2b2b2b;
+    color: #fff;
+    border: none;
+    padding: .5rem .9rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 991.98px) {
+    .art-detail {
+        grid-template-columns: 1fr;
+        margin: 1rem 0;
+        gap: 1rem;
+    }
+    .art-detail-info h1 {
+        font-size: 1.1rem;
+    }
+}
+
 .room-quote-grid {
     position: absolute;
     top: 6%;
