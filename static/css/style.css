@@ -763,7 +763,7 @@ input[type="radio"] {
 }
 
 .art-title {
-  font-weight: 700;
+  font-weight: 500;
   color: #1f1f1f;
   margin: 0 0 0.35rem 0;
 }
@@ -799,8 +799,8 @@ input[type="radio"] {
 }
 
 .art-price {
-  color: #2b2b2b;
-  font-weight: 700;
+  color: #6b6b6b;
+  font-weight: 400;
   margin-top: 0.6rem;
 }
 
@@ -855,7 +855,7 @@ input[type="radio"] {
 
 .art-price {
   font-size: 1.25rem;
-  font-weight: 700;
+    font-weight: 600;
   margin-top: 0.5rem;
 }
 
