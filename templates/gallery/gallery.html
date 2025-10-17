@@ -55,4 +55,17 @@
     {% endfor %}
   </div>
 
+  <!-- Shop highlight band: sits under the gallery, above the footer -->
+  <section class="shop-highlight py-5" aria-label="Shop highlights">
+    <div class="container text-center">
+      <div class="shop-highlight-inner">
+        <div class="section-title text-center mb-3">
+          <h3 class="mb-3">Ready to take a piece home?</h3>
+          <p class="lead">Free shipping in Sweden on orders over 10000 kr. For international orders, contact for shipping options and quotes.</p>
+        </div>
+        <p class="mt-3"><a href="{% url 'contact' %}" class="btn btn-outline-dark">Contact / Shipping info</a></p>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}
