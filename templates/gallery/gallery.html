@@ -2,22 +2,26 @@
 {% load static %}
 
 {% block content %}
-<form method="get">
-  <label for="tag">Filter by tag:</label>
-  <select name="tag" id="tag" onchange="this.form.submit()">
-    <option value="">All</option>
-    {% for tag in tags %}
-      <option value="{{ tag.slug }}" {% if tag.slug == selected_tag %}selected{% endif %}>{{ tag.name }}</option>
-    {% endfor %}
-  </select>
+<form method="get" class="filter-bar">
+  <div class="filter-item">
+    <label class="filter-label" for="tag">Filter by tag:</label>
+    <select name="tag" id="tag" class="filter-select" onchange="this.form.submit()">
+      <option value="">All</option>
+      {% for tag in tags %}
+        <option value="{{ tag.slug }}" {% if tag.slug == selected_tag %}selected{% endif %}>{{ tag.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
-  <label for="sort">Sort by:</label>
-  <select name="sort" id="sort" onchange="this.form.submit()">
-    <option value="">Default</option>
-    <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>Recently Uploaded</option>
-    <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low \ High</option>
-    <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High \ Low</option>
-  </select>
+  <div class="filter-item">
+    <label class="filter-label" for="sort">Sort by:</label>
+    <select name="sort" id="sort" class="filter-select" onchange="this.form.submit()">
+      <option value="">Default</option>
+      <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>Recently Uploaded</option>
+      <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low to High</option>
+      <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High to Low</option>
+    </select>
+  </div>
 </form>
 <!-- Art Entries Column -->
 <div class="gallery-container">
