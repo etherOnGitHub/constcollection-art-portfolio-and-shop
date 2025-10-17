@@ -1,0 +1,195 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 order-md-2 text-center">
+      <img
+        src="{% static 'images/hands.jpg' %}"
+        alt="Hands artwork"
+        class="img-fluid rounded mb-4"
+      />
+    </div>
+    <div class="col-md-6 order-md-1">
+      <h1 class="display-6">Frequently Asked Questions</h1>
+      <p class="lead">
+        Below are answers to common questions about purchases, shipping and
+        reproductions. If you don't find what you need, please contact us.
+      </p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqOne"
+              aria-expanded="true"
+              aria-controls="faqOne"
+            >
+              Can I order a work that is not listed in the gallery?
+            </button>
+          </h2>
+          <div
+            id="faqOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="faqHeadingOne"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Yes — please contact us via the
+              <a href="{% url 'contact' %}">Contact</a> page or by email.
+              Provide the title of the work, preferred size and desired
+              deadline.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqTwo"
+              aria-expanded="false"
+              aria-controls="faqTwo"
+            >
+              What is the ordering and payment process?
+            </button>
+          </h2>
+          <div
+            id="faqTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="faqHeadingTwo"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              After confirming availability we issue a proforma invoice with
+              payment details. We accept bank transfers and shop-supported
+              payment methods (where available). Once payment is received we
+              prepare and ship the work.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqThree"
+              aria-expanded="false"
+              aria-controls="faqThree"
+            >
+              Do you ship works internationally?
+            </button>
+          </h2>
+          <div
+            id="faqThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="faqHeadingThree"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Yes — we ship internationally. Costs and delivery times depend on
+              the destination country and package size. We will provide exact
+              details once we have the delivery address.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingFour">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqFour"
+              aria-expanded="false"
+              aria-controls="faqFour"
+            >
+              Do you offer reproductions/prints?
+            </button>
+          </h2>
+          <div
+            id="faqFour"
+            class="accordion-collapse collapse"
+            aria-labelledby="faqHeadingFour"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Some works are available as limited edition prints. Availability
+              and pricing are listed on the work's page — contact us if you're
+              unsure.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingFive">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqFive"
+              aria-expanded="false"
+              aria-controls="faqFive"
+            >
+              What if the shipment is damaged?
+            </button>
+          </h2>
+          <div
+            id="faqFive"
+            class="accordion-collapse collapse"
+            aria-labelledby="faqHeadingFive"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Please take photos of the packaging and the artwork and contact us
+              immediately upon receipt. We will review the claim promptly and
+              arrange compensation or return as appropriate.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingSix">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqSix"
+              aria-expanded="false"
+              aria-controls="faqSix"
+            >
+              Do you offer framing?
+            </button>
+          </h2>
+          <div
+            id="faqSix"
+            class="accordion-collapse collapse"
+            aria-labelledby="faqHeadingSix"
+            data-bs-parent="#faqAccordion"
+          >
+            <div class="accordion-body">
+              Depending on the work and availability we offer custom framing
+              options. Provide your preferences when ordering and we will
+              present options and pricing.
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 small text-muted">
+        Didn't find an answer? <a href="{% url 'contact' %}">Contact us</a> and
+        we'll be happy to help.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
