@@ -1,12 +1,12 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="container">
   <div class="art-detail">
     <div class="art-detail-media">
       {% if artwork.image_url %}
-        <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text|default:artwork.title }}">
+      <img
+        src="{{ artwork.image_url.url }}"
+        alt="{{ artwork.alt_text|default:artwork.title }}"
+      />
       {% endif %}
     </div>
     <div class="art-detail-info">
@@ -24,14 +24,20 @@
         action="{% url 'create_checkout_session' artwork.art_id %}"
         method="POST"
       >
-          {% csrf_token %}
-          <button type="submit" class="btn btn-dark">Buy now</button>
-        </form>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-dark btn-shop-highlight">
+          Buy now
+        </button>
+      </form>
       {% else %}
-        <span class="badge bg-secondary">Sold</span>
+      <span class="badge bg-secondary">Sold</span>
       {% endif %}
 
-  <p class="mt-3"><a href="{% url 'gallery' %}" class="back-to-gallery">Back to gallery</a></p>
+      <p class="mt-3">
+        <a href="{% url 'gallery' %}" class="back-to-gallery"
+          >Back to gallery</a
+        >
+      </p>
     </div>
   </div>
 </div>
