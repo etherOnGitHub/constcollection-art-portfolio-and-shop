@@ -693,10 +693,43 @@ input[type="radio"] {
   padding: 2.5rem 1rem;
 }
 
+/* subtle separator between gallery and following content */
+.gallery-container::after {
+    content: "";
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    margin: 2.25rem auto 0 auto;
+    background: rgba(16,16,16,0.06);
+    pointer-events: none;
+}
+
 .gallery-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
+}
+
+/* Shop highlight band: contrasts with footer and gallery */
+.shop-highlight .shop-highlight-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.shop-highlight .btn.btn-outline-dark {
+    border-color: rgba(16,16,16,0.12);
+    color: #ffffff;
+    background: #5e6946; /* requested button color */
+    padding: 0.55rem 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+.shop-highlight .btn.btn-outline-dark:hover,
+.shop-highlight .btn.btn-outline-dark:focus {
+    background: #4f583d; /* slightly darker on hover */
+    color: #fff;
+    text-decoration: none;
 }
 
 .art-card {
