@@ -1121,6 +1121,65 @@ img {
   border-radius: 0 !important;
 }
 
+/* Strong dimming specifically for studio image and constrained height */
+.studio-hero-wrapper {
+  position: relative;
+  height: 55vh;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.studio-hero-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.42) contrast(0.95);
+}
+
+.studio-hero-wrapper .hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 8, 0.85) 0%,
+    rgba(8, 8, 8, 0.15) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+.studio-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 2.5rem 1.25rem;
+  color: #fff;
+}
+
+.studio-caption-inner h2 {
+  font-size: 2.8rem;
+  margin: 0 0 0.4rem 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+
+.studio-caption-inner p {
+  margin: 0;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 767.98px) {
+  .studio-hero-wrapper {
+    height: 40vh;
+    min-height: 220px;
+  }
+  .studio-caption-inner h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .accordion-button {
   color: var(--color-text);
 }
@@ -1140,4 +1199,6 @@ img {
   background-color: transparent;
   color: var(--color-text);
 }
+
+
 
