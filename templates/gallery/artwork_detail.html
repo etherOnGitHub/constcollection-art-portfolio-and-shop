@@ -16,11 +16,14 @@
       <div class="art-description">{{ artwork.description|safe }}</div>
 
       {% if artwork.image_width and artwork.image_height %}
-        <p class="art-dimensions">Dimensions: {{ artwork.image_width }} x {{ artwork.image_height }} in</p>
-      {% endif %}
-
-      {% if artwork.is_available %}
-        <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST">
+      <p class="art-dimensions">
+        Dimensions: {{ artwork.image_width }} x {{ artwork.image_height }} in
+      </p>
+      {% endif %} {% if artwork.is_available %}
+      <form
+        action="{% url 'create_checkout_session' artwork.art_id %}"
+        method="POST"
+      >
           {% csrf_token %}
           <button type="submit" class="btn btn-dark">Buy now</button>
         </form>
