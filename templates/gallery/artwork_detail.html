@@ -2,32 +2,34 @@
 {% load static %}
 
 {% block content %}
-<div class="art-detail">
-  <div class="art-detail-media">
-    {% if artwork.image_url %}
-      <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text|default:artwork.title }}">
-    {% endif %}
-  </div>
-  <div class="art-detail-info">
-    <h1>{{ artwork.title }}</h1>
-    <p class="art-artist">{{ artist.name }}</p>
-    <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
-    <div class="art-description">{{ artwork.description|safe }}</div>
+<div class="container">
+  <div class="art-detail">
+    <div class="art-detail-media">
+      {% if artwork.image_url %}
+        <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text|default:artwork.title }}">
+      {% endif %}
+    </div>
+    <div class="art-detail-info">
+      <h1>{{ artwork.title }}</h1>
+      <p class="art-artist">{{ artist.name }}</p>
+      <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
+      <div class="art-description">{{ artwork.description|safe }}</div>
 
-    {% if artwork.image_width and artwork.image_height %}
-      <p class="art-dimensions">Dimensions: {{ artwork.image_width }} × {{ artwork.image_height }} in</p>
-    {% endif %}
+      {% if artwork.image_width and artwork.image_height %}
+        <p class="art-dimensions">Dimensions: {{ artwork.image_width }} x {{ artwork.image_height }} in</p>
+      {% endif %}
 
-    {% if artwork.is_available %}
-      <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-success">Purchase</button>
-      </form>
-    {% else %}
-      <span class="badge bg-secondary">Sold</span>
-    {% endif %}
+      {% if artwork.is_available %}
+        <form action="{% url 'create_checkout_session' artwork.art_id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-dark">Buy now</button>
+        </form>
+      {% else %}
+        <span class="badge bg-secondary">Sold</span>
+      {% endif %}
 
-    <p><a href="{% url 'gallery' %}">Back to gallery</a></p>
+  <p class="mt-3"><a href="{% url 'gallery' %}" class="back-to-gallery">Back to gallery</a></p>
+    </div>
   </div>
 </div>
 {% endblock %}

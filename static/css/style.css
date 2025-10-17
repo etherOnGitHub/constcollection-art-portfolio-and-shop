@@ -293,6 +293,303 @@ nav.navbar .navbar-brand img.logo {
     }
 }
 
+/* Header for room quotes */
+.room-quote-title {
+    font-family: "Instrument Sans", "Xanh Mono", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2b2b2b;
+    margin-bottom: 0.2rem;
+}
+.room-quote-subtitle {
+    font-size: 1rem;
+    color: #59514a;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.45;
+    margin-bottom: 0;
+}
+@media (max-width: 767.98px) {
+    .room-quote-title {
+        font-size: 1.25rem;
+    }
+
+    .room-quote-subtitle {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+}
+
+/* ------------------------------------------------------------------
+   Room quote styles
+   - Grid of artist quotes rendered over the room image
+   - Subtle stagger (small translate/rotate) for an intentional, casual look
+   - Responsive: switches to stacked layout on smaller screens
+   ------------------------------------------------------------------ */
+
+.room-quote-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.room-quote-img {
+    width: 100%;
+    display: block;
+    max-height: 914px; /* desktop cap */
+    object-fit: cover;
+}
+
+/* CTA button */
+.room-quote-cta {
+    position: absolute;
+    left: 2.25rem;
+    bottom: 2.25rem;
+    z-index: 4;
+    display: inline-block;
+    padding: 0.9rem 1.8rem; /* increased padding */
+    font-size: 1.05rem; /* larger text */
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.95);
+    background: rgba(0,0,0,0.12);
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.room-quote-cta:hover,
+.room-quote-cta:focus {
+    background: rgba(0,0,0,0.22);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    outline: none;
+}
+
+@media (max-width: 767.98px) {
+    .room-quote-cta {
+        left: 1rem;
+        bottom: 1rem;
+        padding: 0.7rem 1.1rem; /* slightly larger on mobile */
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .room-quote-img {
+        max-height: none;
+        object-fit: contain;
+        height: auto;
+    }
+}
+
+.room-quote-text {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.92);
+    color: #2b2b2b;
+    font-size: 1rem;
+    line-height: 1.45;
+    padding: 0.9rem 1.1rem;
+    border-left: 4px solid rgba(150, 100, 70, 0.9);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* Artwork detail styles (readable/indented) */
+.art-detail {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.art-detail-media {
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, .04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.art-detail-media img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.art-detail-info h1 {
+    font-family: "Instrument Sans", "Xanh Mono", sans-serif;
+    font-weight: 700;
+    margin: .2rem 0;
+}
+
+.art-artist {
+    color: #5c4234;
+    font-weight: 600;
+}
+
+.art-price {
+    font-weight: 800;
+    margin: .5rem 0;
+}
+
+.btn-purchase {
+    background: #2b2b2b;
+    color: #fff;
+    border: none;
+    padding: .5rem .9rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 991.98px) {
+    .art-detail {
+        grid-template-columns: 1fr;
+        margin: 1rem 0;
+        gap: 1rem;
+    }
+    .art-detail-info h1 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Back to gallery link */
+.back-to-gallery {
+    color: #000;
+    text-decoration: none;
+}
+
+.room-quote-grid {
+    position: absolute;
+    top: 6%;
+    left: 6%;
+    right: 6%;
+    pointer-events: none;
+}
+
+.room-quote-grid .quote-item {
+    pointer-events: auto;
+}
+
+.quote-a {
+    transform: translateY(0) rotate(-0.6deg);
+}
+
+.quote-b {
+    transform: translateY(4px) rotate(0.6deg);
+}
+
+.quote-c {
+    transform: translateY(-3px) rotate(0.7deg);
+}
+
+.quote-d {
+    transform: translateY(4px) rotate(-0.8deg);
+}
+
+.room-quote-grid .room-quote-text {
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+}
+/* Keep 2x2 overlay on most phones; only stack on very narrow screens */
+@media (max-width: 319.98px) {
+    .room-quote-grid {
+        position: static;
+        display: block;
+        margin-top: -3rem;
+        padding: 0 1rem;
+    }
+
+    .room-quote-grid .quote-item {
+        margin-bottom: 0.6rem;
+    }
+
+    .room-quote-grid .room-quote-text {
+        display: inline-block;
+        width: auto;
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+@media (max-width: 420px) {
+    /* Slightly reduce padding so two columns fit comfortably on narrow phones */
+    .room-quote-grid .room-quote-text {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.85rem;
+    }
+}
+
+/* Decorative pin above each quote: metallic head + needle */
+.quote-item {
+    position: relative;
+}
+.quote-pin {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #4b4b4b 0%, #000 100%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    display: inline-block;
+    pointer-events: none;
+}
+.quote-pin:before {
+    /* small highlight */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 32%;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+}
+.quote-pin:after {
+    /* needle */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 12px;
+    background: linear-gradient(180deg,#bbb,#666);
+    border-radius: 1px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+@media (max-width: 420px) {
+    .quote-pin {
+        top: -12px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .quote-pin:before {
+        width: 4px;
+        height: 4px;
+        top: 32%;
+    }
+
+    .quote-pin:after {
+        height: 9px;
+    }
+}
+
+
+
+
 /* Mobile styles (<= 767.98px) */
 @media (max-width: 767.98px) {
     /* Stack content with tighter spacing */
@@ -463,15 +760,105 @@ input[type="radio"] {
   padding: 2.5rem 1rem;
 }
 
+/* subtle separator between gallery and following content */
+.gallery-container::after {
+    content: "";
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    margin: 2.25rem auto 0 auto;
+    background: rgba(16,16,16,0.06);
+    pointer-events: none;
+}
+
 .gallery-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
 }
 
+/* Filter bar styling */
+.filter-bar {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+}
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.25rem 0.25rem;
+}
+.filter-label {
+    font-size: 0.92rem;
+    color: #4b4b4b;
+}
+.filter-select {
+    border: 1px solid rgba(16,16,16,0.12);
+    padding: 0.45rem 0.6rem;
+    background: #fff;
+    color: #1f1f1f;
+    border-radius: 2px;
+}
+.filter-select:focus {
+    outline: 2px solid rgba(94,105,70,0.18);
+    box-shadow: 0 0 0 3px rgba(94,105,70,0.06);
+}
+
+/* accent color for selected option (visual only) */
+.filter-select option[selected] {
+    background: #5e6946;
+    color: #fff;
+}
+
+/* Make tag badges wrap and be touch-friendly on mobile */
+.image-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: transparent;
+    color: #6b6b6b;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: normal; /* allow wrapping */
+    max-width: 40%;
+}
+
+@media (max-width: 575.98px) {
+    .filter-bar { gap: 0.6rem; }
+    .filter-item { width: 100%; }
+    .filter-select { width: 100%; }
+    .image-badge { font-size: 0.65rem; max-width: 65%; top: 8px; left: 8px; }
+}
+
+/* Shop highlight band: contrasts with footer and gallery */
+.shop-highlight .shop-highlight-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+.shop-highlight .btn.btn-outline-dark {
+    border-color: rgba(16,16,16,0.12);
+    color: #ffffff;
+    background: #5e6946; /* requested button color */
+    padding: 0.55rem 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+.shop-highlight .btn.btn-outline-dark:hover,
+.shop-highlight .btn.btn-outline-dark:focus {
+    background: #4f583d; /* slightly darker on hover */
+    color: #fff;
+    text-decoration: none;
+}
+
 .art-card {
-  background: #f7f3ee; /* soft cream */
-  padding: 2.75rem 1.5rem;
+    background: #f7f3ee; /* soft cream */
+    padding: 3rem 1.75rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -533,7 +920,7 @@ input[type="radio"] {
 }
 
 .art-title {
-  font-weight: 700;
+  font-weight: 500;
   color: #1f1f1f;
   margin: 0 0 0.35rem 0;
 }
@@ -569,8 +956,8 @@ input[type="radio"] {
 }
 
 .art-price {
-  color: #2b2b2b;
-  font-weight: 700;
+  color: #6b6b6b;
+  font-weight: 400;
   margin-top: 0.6rem;
 }
 
@@ -625,7 +1012,7 @@ input[type="radio"] {
 
 .art-price {
   font-size: 1.25rem;
-  font-weight: 700;
+    font-weight: 600;
   margin-top: 0.5rem;
 }
 
@@ -652,7 +1039,7 @@ input[type="radio"] {
   display: inline-block;
   color: #1f1f1f;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
   margin-top: 0.5rem;
 }
 

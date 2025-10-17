@@ -13,11 +13,12 @@
     </div>
 </section>
 
+
 <!-- Art for your space: gallery preview below hero -->
 <section id="art-for-space" class="py-5">
     <div class="container">
-        <div class="section-title text-center mb-4">
-            <h2 class="mb-2">Art for your space</h2>
+        <div class="section-title text-center mb-5">
+            <h2 class="mb-4">Art for your space</h2>
             <p class="lead">See how art transforms interiors, then choose the piece that speaks to you.</p>
         </div>
 
@@ -63,6 +64,40 @@
                     <img src="{% static 'images/venus.png' %}" alt="Venus" class="img-fluid w-100">
                 </figure>
             </div>
+        </div>
+    </div>
+</section>
+<!-- Room quote -->
+<section id="room-quote" class="py-5 px-0">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2 class="mb-4">Words from the studio</h2>
+            <p class="lead">Reflections on art, motherhood, and the feminine experience.</p>
+        </div>
+    </div>
+    <div class="room-quote-wrapper">
+        <img src="{% static 'images/room.jpg' %}" alt="Room scene" class="img-fluid room-quote-img">
+        <a href="{% url 'gallery' %}" class="room-quote-cta" aria-label="Discover art — go to gallery">DISCOVER ART</a>
+        <div class="room-quote-grid row" aria-label="Artist quotes">
+            <figure class="quote-item quote-a col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“I am not only a painter, but also a storyteller. Each painting tells a story — of courage, identity, and quiet transformation.”</blockquote>
+            </figure>
+
+            <figure class="quote-item quote-b col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“Through painting, I reclaim a space of deep seeing, one that rejects distortion and affirms the spiritual and ancestral richness of the feminine experience.”</blockquote>
+            </figure>
+
+            <figure class="quote-item quote-c col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“It is time for a new revolution, one that is quietly powerful. A revolution of remembering, of returning to what is real, embodied, and whole.”</blockquote>
+            </figure>
+
+            <figure class="quote-item quote-d col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“Through painting, I reclaim a space of deep seeing, one that rejects distortion and affirms the spiritual and ancestral richness of the feminine experience.”</blockquote>
+            </figure>
         </div>
     </div>
 </section>
