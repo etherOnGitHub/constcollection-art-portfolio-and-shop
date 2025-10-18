@@ -38,9 +38,11 @@ class Artwork(models.Model):
     alt_text = models.CharField(max_length=150, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     is_available = models.BooleanField(default=True)
+    inventory_count = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     inventory_count = models.PositiveIntegerField(default=1)
     tags = models.ManyToManyField(Tag, blank=True, related_name='artworks') 
+    is_print = models.BooleanField(default=False)  # Add this line
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -49,5 +51,5 @@ class Artwork(models.Model):
         
     def __str__(self):
         return self.title
-    
+
 

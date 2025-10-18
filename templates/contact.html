@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-5">
+	<div class="row align-items-center">
+		<!-- Left: Image -->
+		<div class="col-12 col-md-6 mb-4 mb-md-0">
+			<div class="contact-image-wrap">
+				<img src="{% static 'images/contact_image.png' %}" alt="Contact" class="img-fluid">
+			</div>
+		</div>
+
+		<!-- Right: Text + Form -->
+		<div class="col-12 col-md-6">
+				<h2 class="mb-3">Contact the Artist</h2>
+				<p class="lead">Have a question about a work, want to commission a piece, discuss an exhibition, or arrange a viewing? Please use the form below and provide as many details as you can — this helps me respond more quickly and precisely.</p>
+
+			<form method="post" novalidate>
+				{% csrf_token %}
+				<div class="mb-3">
+					{{ collaborate_form.name.label_tag }}
+					{{ collaborate_form.name }}
+					{% if collaborate_form.name.errors %}
+						<div class="text-danger small">{{ collaborate_form.name.errors|striptags }}</div>
+					{% endif %}
+				</div>
+
+				<div class="mb-3">
+					{{ collaborate_form.email.label_tag }}
+					{{ collaborate_form.email }}
+					{% if collaborate_form.email.errors %}
+						<div class="text-danger small">{{ collaborate_form.email.errors|striptags }}</div>
+					{% endif %}
+				</div>
+
+				<div class="mb-3">
+					{{ collaborate_form.subject.label_tag }}
+					{{ collaborate_form.subject }}
+					{% if collaborate_form.subject.errors %}
+						<div class="text-danger small">{{ collaborate_form.subject.errors|striptags }}</div>
+					{% endif %}
+				</div>
+
+				<div class="mb-3">
+					{{ collaborate_form.message.label_tag }}
+					{{ collaborate_form.message }}
+					{% if collaborate_form.message.errors %}
+						<div class="text-danger small">{{ collaborate_form.message.errors|striptags }}</div>
+					{% endif %}
+				</div>
+
+				<div class="d-grid">
+					  <button type="submit" class="btn btn-dark">Send Message</button>
+				</div>
+			</form>
+
+			<hr class="my-4">
+			<p class="mb-0 small text-muted">Alternatively you can write directly: <a href="mailto:cecilia.kristoffersson71@gmail.com">cecilia.kristoffersson71@gmail.com</a></p>
+		</div>
+	</div>
+</section>
+
+{% endblock content %}

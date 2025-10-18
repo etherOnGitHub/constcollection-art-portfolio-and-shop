@@ -3,20 +3,137 @@
 
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django-Setup</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'images/logoonlywhite.png' %}">
-</head>
-<body>
-    <h1>© CONST COLLECTION</h1>
+<!-- Hero section: full-width background image with gradient overlay and centered heading -->
+<section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content container h-100 d-flex align-items-center justify-content-center text-center">
+        <div class="hero__text">
+            <h1 class="hero__title">ILLUMINATED ACRYLIC PAINTINGS OF THE STORIES SHARED BETWEEN, WITH AND FOR MOTHERS AND DAUGHTERS</h1>
+        </div>
+    </div>
+</section>
 
-</body>
-</html>
 
-<!-- index.html content ends here -->
+<!-- Art for your space: gallery preview below hero -->
+<section id="art-for-space" class="py-5">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2 class="mb-4">Art for your space</h2>
+            <p class="lead">See how art transforms interiors, then choose the piece that speaks to you.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/fortuna.png' %}" alt="Fortuna" class="img-fluid w-100">
+                </figure>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/lilith.png' %}" alt="Lilith" class="img-fluid w-100">
+                </figure>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/noma.png' %}" alt="Noma" class="img-fluid w-100">
+                </figure>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/shumba.png' %}" alt="Shumba" class="img-fluid w-100">
+                </figure>
+            </div>
+
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/still_like.png' %}" alt="Still Like" class="img-fluid w-100">
+                </figure>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/three.png' %}" alt="Three" class="img-fluid w-100">
+                </figure>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/untold_story.png' %}" alt="Untold Story" class="img-fluid w-100">
+                </figure>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="{% static 'images/venus.png' %}" alt="Venus" class="img-fluid w-100">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Room quote -->
+<section id="room-quote" class="py-5 px-0">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2 class="mb-4">Words from the studio</h2>
+            <p class="lead">Reflections on art, motherhood, and the feminine experience.</p>
+        </div>
+    </div>
+    <div class="room-quote-wrapper">
+        <img src="{% static 'images/room.jpg' %}" alt="Room scene" class="img-fluid room-quote-img">
+        <a href="{% url 'gallery' %}" class="room-quote-cta" aria-label="Discover art — go to gallery">DISCOVER ART</a>
+        <div class="room-quote-grid row" aria-label="Artist quotes">
+            <figure class="quote-item quote-a col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“I am not only a painter, but also a storyteller. Each painting tells a story — of courage, identity, and quiet transformation.”</blockquote>
+            </figure>
+
+            <figure class="quote-item quote-b col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“Through painting, I reclaim a space of deep seeing, one that rejects distortion and affirms the spiritual and ancestral richness of the feminine experience.”</blockquote>
+            </figure>
+
+            <figure class="quote-item quote-c col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“It is time for a new revolution, one that is quietly powerful. A revolution of remembering, of returning to what is real, embodied, and whole.”</blockquote>
+            </figure>
+
+            <figure class="quote-item quote-d col-12 col-md-6">
+                <span class="quote-pin" aria-hidden="true"></span>
+                <blockquote class="room-quote-text">“Through painting, I reclaim a space of deep seeing, one that rejects distortion and affirms the spiritual and ancestral richness of the feminine experience.”</blockquote>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- New section: Figurative Art -->
+<section id="figurative-art" class="py-5">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2 class="mb-4">Inspired by Her Daughters</h2>
+            <p class="lead">Exploring movement, identity, and maternal connection</p>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="figurative-image">
+                    <img src="{% static 'images/woman.jpg' %}" alt="Figurative art - woman" class="img-fluid w-100">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <h3 class="section-subtitle">Figurative art & inspiration</h3>
+                <p class="lead">The artist draws inspiration from her daughters — their movement, grace, and embodied awareness echo her lifelong connection to dance and rhythm, rooted in her African childhood. Navigating between cultures and identities, she has learned to embrace difference with pride. That journey continues to shape her figurative work, infusing it with tenderness, strength, and a deep sense of belonging.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Full-width studio image section -->
+<section id="studio-image" aria-label="Studio image" class="py-0">
+    <div class="container-fluid px-0 studio-hero-wrapper">
+        <img src="{% static 'images/studio.jpg' %}" alt="Studio" class="img-fluid w-100">
+        <div aria-hidden="true"></div>
+        <div class="studio-caption container">
+            <div class="studio-caption-inner">
+                <h2>Upcoming Exhibition</h2>
+                <p>Join us this season for a new series of figurative works exploring home, memory and movement.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

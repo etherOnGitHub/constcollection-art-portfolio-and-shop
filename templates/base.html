@@ -1,261 +1,430 @@
-﻿{% url 'home' as home_url %}
-{% load static %}
-
+﻿{% load static %}
+{% url 'home' as home_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
-
+{% url 'faq' as faq_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
-
-<head>
+  <head>
     <!-- icon -->
-    <link rel="icon" type="image/png" href="{% static 'images/logoonlywhite.png' %}">
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% static 'images/logoonlywhite.png' %}"
+    />
     <title>CONST COLLECTION</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Force HTTPS for all resources to prevent Mixed Content errors -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
 
     <!-- Google Fonts CSS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Xanh Mono font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Xanh+Mono:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
 
-<body class="d-flex flex-column h-100 main-bg">
-
+  <body class="d-flex flex-column h-100 main-bg">
     <!-- Top Banner -->
     <div class="top-banner">
-        <div class="container-fluid">
-            <p class="mb-0 py-2 text-center">Soft lines, strong stories • Every piece tells a truth</p>
-        </div>
+      <div
+        class="container-fluid d-flex align-items-center justify-content-center position-relative py-2"
+      >
+        <!-- centered line -->
+        <p class="w-100 mb-0 text-center">
+          Soft lines, strong stories • Every piece tells a truth
+        </p>
+
+        <!-- right-aligned status -->
+        {% if user.is_authenticated %}
+        <p class="small position-absolute end-0 mb-0 me-3 text-end">
+          Signed in as {{ user }}.
+        </p>
+        {% else %}
+        <p class="small position-absolute d-none end-0 mb-0 me-3 text-end">
+          Not signed in — sign up to follow new work.
+        </p>
+        {% endif %}
+      </div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <!-- Mobile: Hamburger menu on left -->
-            <button class="navbar-toggler order-0 order-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <div class="container-fluid">
+        <!-- Mobile: Hamburger menu on left -->
+        <button
+          class="navbar-toggler order-0 order-lg-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Logo - centered on mobile, centered on desktop -->
-            <a class="navbar-brand mx-lg-auto order-1 mx-auto" href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="logo">
-            </a>
+        <!-- Logo - centered on mobile, centered on desktop -->
+        <a
+          class="navbar-brand mx-lg-auto order-1 mx-auto"
+          href="{% url 'home' %}"
+        >
+          <img
+            src="{% static 'images/logo.png' %}"
+            alt="Const Collection logo"
+            class="logo"
+          />
+        </a>
 
-            <!-- Social Icons - visible on desktop, hidden in collapse on mobile -->
-            <div class="d-none d-lg-flex social-icons-desktop order-2">
-                <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.facebook.com/share/1MZ8X8mS4t/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
-
-            <!-- Collapsible content -->
-            <div class="navbar-collapse order-lg-1 collapse order-3" id="navbarContent">
-                <!-- Navigation Links -->
-                <ul class="navbar-nav mb-lg-0 mb-2 me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                           href="{% url 'home' %}">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                           href="{% url 'gallery' %}#">GALLERY</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" aria-current="page"
-                           href="{% url 'about' %}">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                           href="{% url 'home' %}#">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                           href="{% url 'home' %}#">CONTACT</a>
-                    </li>
-
-                </ul>
-                {% if user.is_authenticated %}
-                <div class="flex">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
-                </div>
-                {% else %}
-                <div class="flex">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                </div>
-                {% endif %}
-                <!-- Social Icons for Mobile -->
-                <div class="d-lg-none navbar-nav social-icons-mobile justify-content-center">
-                    <div class="d-flex justify-content-center gap-3 py-2">
-                        <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="nav-link social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="nav-link social-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/1MZ8X8mS4t/" class="nav-link social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <!-- Social Icons - visible on desktop, hidden in collapse on mobile -->
+        <div class="d-none d-lg-flex social-icons-desktop order-2">
+          <a
+            href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6"
+            class="nav-link social-link"
+            aria-label="Follow us on Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY"
+            class="nav-link social-link"
+            aria-label="Follow us on YouTube"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/share/1MZ8X8mS4t/"
+            class="nav-link social-link"
+            aria-label="Follow us on Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
         </div>
+
+        <!-- Collapsible content -->
+        <div
+          class="navbar-collapse order-lg-1 collapse order-3"
+          id="navbarContent"
+        >
+          <!-- Navigation Links -->
+          <ul class="navbar-nav mb-lg-0 mb-2 me-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == home_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'home' %}"
+                >HOME</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == gallery_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'gallery' %}#"
+                >GALLERY</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/about/' %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'about' %}"
+                >ABOUT</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == faq_url %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'faq' %}"
+                >FAQ</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/contact/' %}active{% endif %}"
+                aria-current="page"
+                href="{% url 'contact' %}"
+                >CONTACT</a
+              >
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+          <div class="flex">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal"
+              >Logout</a
+            >
+          </div>
+          {% else %}
+          <div class="flex">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
+              >Login</a
+            >
+          </div>
+          {% endif %}
+          <!-- Social Icons for Mobile -->
+          <div
+            class="d-lg-none navbar-nav social-icons-mobile justify-content-center"
+          >
+            <div class="d-flex justify-content-center gap-3 py-2">
+              <a
+                href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6"
+                class="nav-link social-link"
+                aria-label="Follow us on Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY"
+                class="nav-link social-link"
+                aria-label="Follow us on YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a
+                href="https://www.facebook.com/share/1MZ8X8mS4t/"
+                class="nav-link social-link"
+                aria-label="Follow us on Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- displaying Django messages -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                    {{ message|safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-            </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          {% for message in messages %}
+          <div
+            class="alert {{ message.tags }} alert-dismissible fade show"
+            id="msg"
+            role="alert"
+          >
+            {{ message|safe }}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          {% endfor %}
         </div>
+      </div>
     </div>
 
     <main class="main-bg flex-shrink-0">
-        {% if user.is_authenticated %}
-        <p class="m-3 text-end">Signed in as {{ user }} — explore the portfolio.</p>
-        {% else %}
-        <p class="m-3 text-end">Not signed in — sign up to follow new work.</p>
-        {% endif %}
-
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
-
+      {% block content %}
+      <!-- Content Goes here -->
+      {% endblock content %}
     </main>
 
     <!-- Footer -->
     <footer class="footer mt-auto">
-        <div class="container">
-            <div class="row">
-                <!-- Logo column: show logo and a single studio note -->
-                <div class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center">
-                    <div class="footer-logo">
-                        <img src="{% static 'images/logo.png' %}" alt="Const Collection logo" class="img-fluid footer-logo-img mb-2" />
-                    </div>
-                    <p class="footer-note">Studio based in Sweden. Works available by request.</p>
-                </div>
-
-                <!-- Exhibitions & Viewings -->
-                <div class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center">
-                    <h5 class="footer-heading">Exhibitions & Viewings</h5>
-                    <ul class="list-unstyled footer-list">
-                        <li><strong>Current:</strong> Selected galleries — by appointment</li>
-                        <li><strong>Upcoming:</strong> Solo presentation — details on request</li>
-                        <li><strong>Archive:</strong> Past shows available on the site</li>
-                        <li class="mt-2"><a href="#exhibitions" class="footer-link">View exhibitions</a></li>
-                    </ul>
-                </div>
-
-                <!-- Bookings & Contacts -->
-                <div class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center">
-                    <h5 class="footer-heading">Bookings & Contacts</h5>
-                    <p class="footer-text">For gallery bookings, artist talks, purchases or viewings please contact the artist or curator directly.</p>
-                    <ul class="list-unstyled footer-list footer-contact">
-                        <li>
-                            <strong>Artist — Cecilia K.</strong>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope footer-icon"></i>
-                            <a href="mailto:cecilia.kristoffersson71@gmail.com">cecilia.kristoffersson71@gmail.com</a>
-                        </li>
-                        <li class="mt-2">
-                            <strong>Curator — Magnus Florin</strong>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope footer-icon"></i>
-                            <a href="mailto:k.magnus.florin@gmail.com">k.magnus.florin@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone footer-icon"></i>
-                            <a href="tel:+46708734215">(+46) 0708 73 42 15</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Connect -->
-                <div class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center">
-                    <h5 class="footer-heading">Connect</h5>
-                    <p class="footer-text">Follow the studio for updates, new works and exhibition announcements.</p>
-                    <ul class="list-unstyled footer-list social-list">
-                        <li>
-                            <a href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6" class="footer-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-instagram"></i> Instagram
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY" class="footer-link" aria-label="Follow us on YouTube" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-youtube"></i> YouTube
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/share/1MZ8X8mS4t/" class="footer-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-facebook-f"></i> Facebook
-                            </a>
-                        </li>
-                        <li class="mt-2">
-                            <a href="#newsletter" class="footer-link">Join the mailing list</a>
-                        </li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="row">
+          <!-- Logo column: show logo and a single studio note -->
+          <div
+            class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center"
+          >
+            <div class="footer-logo">
+              <img
+                src="{% static 'images/logo.png' %}"
+                alt="Const Collection logo"
+                class="img-fluid footer-logo-img mb-2"
+              />
             </div>
+            <p class="footer-note">
+              Studio based in Sweden. Works available by request.
+            </p>
+          </div>
 
-            <!-- Copyright -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <hr class="footer-divider">
-                    <p class="footer-copyright text-center">
-                        © 2025 CONST COLLECTION. All rights reserved.
-                    </p>
-                </div>
-            </div>
+          <!-- Exhibitions & Viewings -->
+          <div
+            class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center"
+          >
+            <h5 class="footer-heading">Exhibitions & Viewings</h5>
+            <ul class="list-unstyled footer-list">
+              <li>
+                <strong>Current:</strong> Selected galleries — by appointment
+              </li>
+              <li>
+                <strong>Upcoming:</strong> Solo presentation — details on
+                request
+              </li>
+              <li>
+                <strong>Archive:</strong> Past shows available on the site
+              </li>
+              <li class="mt-2">
+                <a href="#exhibitions" class="footer-link">View exhibitions</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bookings & Contacts -->
+          <div
+            class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center"
+          >
+            <h5 class="footer-heading">Bookings & Contacts</h5>
+            <p class="footer-text">
+              For gallery bookings, artist talks, purchases or viewings please
+              contact the artist or curator directly.
+            </p>
+            <ul class="list-unstyled footer-list footer-contact">
+              <li>
+                <strong>Artist — Cecilia K.</strong>
+              </li>
+              <li>
+                <i class="fas fa-envelope footer-icon"></i>
+                <a href="mailto:cecilia.kristoffersson71@gmail.com"
+                  >cecilia.kristoffersson71@gmail.com</a
+                >
+              </li>
+              <li class="mt-2">
+                <strong>Curator — Magnus Florin</strong>
+              </li>
+              <li>
+                <i class="fas fa-envelope footer-icon"></i>
+                <a href="mailto:k.magnus.florin@gmail.com"
+                  >k.magnus.florin@gmail.com</a
+                >
+              </li>
+              <li>
+                <i class="fas fa-phone footer-icon"></i>
+                <a href="tel:+46708734215">(+46) 0708 73 42 15</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Connect -->
+          <div
+            class="col-12 col-md-6 col-lg-3 mb-md-0 text-md-start mb-4 text-center"
+          >
+            <h5 class="footer-heading">Connect</h5>
+            <p class="footer-text">
+              Follow the studio for updates, new works and exhibition
+              announcements.
+            </p>
+            <ul class="list-unstyled footer-list social-list">
+              <li>
+                <a
+                  href="https://www.instagram.com/constcollectionartbyceciliak?igsh=aHd2dTFnZHhsNWR6"
+                  class="footer-link"
+                  aria-label="Follow us on Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fab fa-instagram"></i> Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://youtube.com/@constcollectionartbycecilia.k?si=3hSd7ie6KtD8EvoY"
+                  class="footer-link"
+                  aria-label="Follow us on YouTube"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fab fa-youtube"></i> YouTube
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/share/1MZ8X8mS4t/"
+                  class="footer-link"
+                  aria-label="Follow us on Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+              </li>
+              <li class="mt-2">
+                <a href="#newsletter" class="footer-link"
+                  >Join the mailing list</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Copyright -->
+        <div class="row mt-4">
+          <div class="col-12">
+            <hr class="footer-divider" />
+            <p class="footer-copyright text-center">
+              © 2025 CONST COLLECTION. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Custom JavaScript -->
     <script src="{% static 'js/script.js' %}"></script>
 
     <!-- modals -->
     <div id="modal-container">
-        {% include "account/login.html" %}
-        {% include "account/logout.html" %}
-        {% include "account/signup.html" %}
+    {% include "account/login.html" %}
+    {% include "account/logout.html" %}
+    {% include "account/signup.html" %}
     </div>
     <!-- Additional blocks for child templates -->
     {% block extras %}{% endblock %}
-</body>
-
+  </body>
 </html>

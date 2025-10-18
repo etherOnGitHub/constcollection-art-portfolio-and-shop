@@ -43,6 +43,8 @@ if host:
     ALLOWED_HOSTS.append(host)
     CSRF_TRUSTED_ORIGINS.append(f"https://{host}")
 
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 
 # Application definition
 
@@ -63,6 +65,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'gallery',
     'login',
+    'contact',
 ]
 
 
@@ -106,6 +109,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'constcollection.context_processors.auth_forms',
             ],
         },
     },
@@ -117,13 +121,15 @@ WSGI_APPLICATION = 'constcollection.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-     "default": dj_database_url.parse(
-       os.environ.get("DATABASE_URL"),
-       conn_max_age=600,
-        ssl_require=True,
-     )
-}
+db_url = os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")
+if db_url.startswith("sqlite"):
+    DATABASES = {
+        "default": dj_database_url.parse(db_url, conn_max_age=600)
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.parse(db_url, conn_max_age=600, ssl_require=True)
+    }
 
 
 # Password validation

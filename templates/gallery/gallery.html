@@ -2,39 +2,78 @@
 {% load static %}
 
 {% block content %}
-<form method="get">
-  <label for="tag">Filter by tag:</label>
-  <select name="tag" id="tag" onchange="this.form.submit()">
-    <option value="">All</option>
-    {% for tag in tags %}
-      <option value="{{ tag.slug }}" {% if tag.slug == selected_tag %}selected{% endif %}>{{ tag.name }}</option>
-    {% endfor %}
-  </select>
+<form method="get" class="filter-bar">
+  <div class="filter-item">
+    <label class="filter-label" for="tag">Filter by tag:</label>
+    <select name="tag" id="tag" class="filter-select" onchange="this.form.submit()">
+      <option value="">All</option>
+      {% for tag in tags %}
+        <option value="{{ tag.slug }}" {% if tag.slug == selected_tag %}selected{% endif %}>{{ tag.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
-  <label for="sort">Sort by:</label>
-  <select name="sort" id="sort" onchange="this.form.submit()">
-    <option value="">Default</option>
-    <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>Recently Uploaded</option>
-    <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low → High</option>
-    <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High → Low</option>
-  </select>
+  <div class="filter-item">
+    <label class="filter-label" for="sort">Sort by:</label>
+    <select name="sort" id="sort" class="filter-select" onchange="this.form.submit()">
+      <option value="">Default</option>
+      <option value="recent" {% if selected_sort == 'recent' %}selected{% endif %}>Recently Uploaded</option>
+      <option value="price_low" {% if selected_sort == 'price_low' %}selected{% endif %}>Price: Low to High</option>
+      <option value="price_high" {% if selected_sort == 'price_high' %}selected{% endif %}>Price: High to Low</option>
+    </select>
+  </div>
 </form>
-
-<div class="gallery">
   {% if user.is_superuser %}
     <a href="{% url 'artwork_create' %}">Add Artwork</a>
     <a href="{% url 'artwork_list' %}">Manage Artworks</a>
   {% endif %}
-  {% for artwork in artworks %}
-    <div class="art-item">
-      <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
-      <h3>{{ artwork.title }}</h3>
-      <p>Price: ${{ artwork.price }}</p>
-      <a href="{% url 'artwork_detail' artwork.slug %}">See More</a>
+<!-- Art Entries Column -->
+<div class="gallery-container">
+  <div class="section-title text-center mb-5" role="banner" aria-label="Gallery and shop">
+    <h2 class="mb-4">Gallery & Shop</h2>
+    <p class="lead">Browse and buy original artworks — available to purchase online.</p>
+  </div>
+  <div class="gallery-row">
+    {% for art in artworks %}
+      <div class="art-card">
+        <div class="image-frame">
+          {% if art.image_url and 'placeholder' in art.image_url.url %}
+             <img src="{% static 'images/hero.jpg' %}" alt="placeholder image">
+          {% elif art.image_url %}
+             <img src="{{ art.image_url.url }}" alt="{{ art.alt_text|default:art.title }}">
+          {% else %}
+             <img src="{% static 'images/hero.jpg' %}" alt="{{ art.title }}">
+          {% endif %}
+          {% if art.tags.all %}
+           <div class="image-badge">
+            {% for t in art.tags.all %}
+              <span>{{ t.name }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+          <div class="wishlist-heart">♡</div>
+        </div>
+        <div class="card-meta">
+          <p class="art-sub">{% if art.artist %}{{ art.artist.name }}{% endif %}</p>
+          <a class="art-title-link" href="{% url 'artwork_detail' art.slug %}"><h3 class="art-title">{{ art.title }}</h3></a>
+          <p class="art-price">From kr {{ art.price|floatformat:2 }}</p>
+          <p><a class="view-details-link" href="{% url 'artwork_detail' art.slug %}">View details -></a></p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <!-- Shop highlight band: sits under the gallery, above the footer -->
+  <section class="shop-highlight py-5" aria-label="Shop highlights">
+    <div class="container text-center">
+      <div class="shop-highlight-inner">
+        <div class="section-title text-center mb-3">
+          <h3 class="mb-3">Ready to take a piece home?</h3>
+          <p class="lead">Free shipping in Sweden on orders over 10000 kr. For international orders, contact for shipping options and quotes.</p>
+        </div>
+        <p class="mt-3"><a href="{% url 'contact' %}" class="btn btn-outline-dark">Contact / Shipping info</a></p>
+      </div>
     </div>
-  {% empty %}
-    <p>No artworks found.</p>
-  {% endfor %}
-</div>
+  </section>
 
 {% endblock %}
