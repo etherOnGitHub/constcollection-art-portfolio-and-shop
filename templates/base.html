@@ -428,13 +428,13 @@
 
     <!-- Custom JavaScript -->
     <script src="{% static 'js/script.js' %}"></script>
-
     <!-- modals -->
-    <div id="modal-container">
+    <div id="modal-container ">
     {% include "account/login.html" %}
     {% include "account/logout.html" %}
     {% include "account/signup.html" %}
     </div>
+    
     <!-- Additional blocks for child templates -->
     {% block extras %}{% endblock %}
   </body>
