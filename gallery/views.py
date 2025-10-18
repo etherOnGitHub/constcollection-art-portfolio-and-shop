@@ -88,7 +88,8 @@ class ArtworkUpdateView(UpdateView):
 
     def form_valid(self, form):
         if not form.instance.slug:
-            form.instance.slug = slugify(form.instance.title)
+            # Preserve the existing slug if the form's slug is empty
+            form.instance.slug = self.get_object().slug
         return super().form_valid(form)
 
 @superuser_required_cbv
