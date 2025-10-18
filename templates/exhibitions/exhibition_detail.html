@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ exhibition.title }}{% endblock title %}
+
+{% block content %}
+  <div class="exhibition-detail">
+    <h1>{{ exhibition.title }}</h1>
+    <p><strong>Dates:</strong> {{ exhibition.start_date }} - {{ exhibition.end_date }}</p>
+    <div class="exhibition-media">
+      <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }} Cover Image">
+      {% if exhibition.video %}
+        <video width="640" height="480" controls>
+          <source src="{{ exhibition.video.url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% endif %}
+    </div>
+    <div class="exhibition-description">
+      {{ exhibition.description|safe }}
+    </div>
+    {% if user.is_superuser %}
+      <a href="{% url 'edit_exhibition' exhibition.pk %}" class="btn btn-secondary">Edit Exhibition</a>
+      <a href="{% url 'delete_exhibition' exhibition.pk %}" class="btn btn-danger">Delete Exhibition</a>
+    {% endif %}
+    <p class="mt-3">
+      <a href="{% url 'exhibition_list' %}" class="back-to-exhibitions">Back to exhibitions</a>
+    </p>
+  </div>
+{% endblock %}

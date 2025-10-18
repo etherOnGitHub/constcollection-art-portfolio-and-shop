@@ -17,7 +17,7 @@ def create_exhibition(request):
     form = ExhibitionForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         exhibition = form.save()
-        return redirect('exhibitions:exhibition_detail', pk=exhibition.pk)
+        return redirect('exhibition_detail', pk=exhibition.pk)
     return render(request, 'exhibitions/create_exhibition.html', {'form': form})
 
 @superuser_required
@@ -26,11 +26,11 @@ def edit_exhibition(request, pk):
     form = ExhibitionForm(request.POST or None, request.FILES or None, instance=exhibition)
     if form.is_valid():
         form.save()
-        return redirect('exhibitions:exhibition_detail', pk=exhibition.pk)
+        return redirect('exhibition_detail', pk=exhibition.pk)
     return render(request, 'exhibitions/edit_exhibition.html', {'form': form, 'exhibition': exhibition})
 
 @superuser_required
 def delete_exhibition(request, pk):
     exhibition = get_object_or_404(Exhibition, pk=pk)
     exhibition.delete()
-    return redirect('exhibitions:exhibition_list')
+    return redirect('exhibition_list')
