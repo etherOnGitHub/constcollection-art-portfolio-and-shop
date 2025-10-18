@@ -1,8 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from exhibitions.forms import ExhibitionForm
 from .models import Exhibition
-from gallery.decorators import superuser_required
+# from gallery.decorators import superuser_required
 
+
+from django.contrib.auth.decorators import user_passes_test
+
+def superuser_required(view_func):
+    return user_passes_test(lambda u: u.is_superuser)(view_func)
 def exhibition_list(request):
     exhibitions = Exhibition.objects.all()
     return render(request, 'exhibitions/exhibition_list.html', {'exhibitions': exhibitions})
