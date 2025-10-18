@@ -8,13 +8,13 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('gallery/', views.gallery, name='gallery'),
     path('gallery/<slug:slug>/', views.artwork_detail, name='artwork_detail'),
-    #crud for superusers
+    # crud for superusers
     path('manage/artworks/', ArtworkListView.as_view(), name='artwork_list'),
     path('manage/artworks/add/', ArtworkCreateView.as_view(), name='artwork_create'),
     path('manage/artworks/<int:pk>/', ArtworkDetailView.as_view(), name='artwork_detail_superuser'),
     path('manage/artworks/<int:pk>/edit/', ArtworkUpdateView.as_view(), name='artwork_update'),
     path('manage/artworks/<int:pk>/delete/', ArtworkDeleteView.as_view(), name='artwork_delete'),
-    #stripe
+    # stripe
     path('buy/<int:art_id>/', views.create_checkout_session, name='create_checkout_session'),
     path('success/', views.success, name='success'),
     path('cancel/', views.cancel, name='cancel'),

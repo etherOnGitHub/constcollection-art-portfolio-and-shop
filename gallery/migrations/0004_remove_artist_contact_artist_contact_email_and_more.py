@@ -10,10 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name="artist",
-            name="contact",
-        ),
         migrations.AddField(
             model_name="artist",
             name="contact_email",
