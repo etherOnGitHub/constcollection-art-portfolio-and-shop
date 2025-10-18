@@ -171,6 +171,12 @@ nav.navbar .navbar-brand img.logo {
   }
 }
 
+@media (max-width: 575.98px) {
+    .login-status {
+    }
+})
+
+
 #DA {
     font-family: "Xanh Mono", monospace;
     font-weight: 400;
@@ -759,6 +765,7 @@ nav.navbar .navbar-brand img.logo {
   .hero__title {
     font-size: 1.3rem;
   }
+  
 }
 @media (min-width: 768px) {
   .hero__title {
