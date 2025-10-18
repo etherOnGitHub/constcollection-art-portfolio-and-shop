@@ -7,7 +7,7 @@
         <a href="{% url 'create_exhibition' %}" class="btn btn-primary">Add Exhibition</a>
     {% endif %}
     <ul>
-        {% for exhibition in exhibitions %}
+        {% for exhibitions in exhibition %}
             <li>
                 <a href="{% url 'exhibition_detail' exhibition.pk %}" style="display:block; color:inherit; text-decoration:none;">
                     <h2>{{ exhibition.title }}</h2>

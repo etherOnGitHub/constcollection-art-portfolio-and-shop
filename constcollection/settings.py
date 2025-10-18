@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'gallery',
     'login',
     'contact',
+    'exhibitions',
 ]
 
 
