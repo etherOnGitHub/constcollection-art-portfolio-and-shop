@@ -21,7 +21,9 @@
 </form>
 
 <div class="gallery">
-  <a href="{% url 'artwork_add' %}">Add Artwork</a>
+  {% if user.is_superuser %}
+    <a href="{% url 'artwork_add' %}">Add Artwork</a>
+  {% endif %}
   {% for artwork in artworks %}
     <div class="art-item">
       <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">

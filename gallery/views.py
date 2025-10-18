@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from .decorators import superuser_required_cbv
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.utils.text import slugify
 from .forms import ArtworkForm
 
 
@@ -68,12 +69,22 @@ class ArtworkCreateView(CreateView):
     template_name = "gallery/artwork_form.html"
     success_url = reverse_lazy("artwork_list")
 
+    def form_valid(self, form):
+        if not form.instance.slug:
+            form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
+
 @superuser_required_cbv
 class ArtworkUpdateView(UpdateView):
     model = Artwork
     form_class = ArtworkForm
     template_name = "gallery/artwork_form.html"
     success_url = reverse_lazy("artwork_list")
+
+    def form_valid(self, form):
+        if not form.instance.slug:
+            form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
 
 @superuser_required_cbv
 class ArtworkDeleteView(DeleteView):

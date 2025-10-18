@@ -4,6 +4,12 @@
 {% block content %}
 <h1>{{ artwork.title }}</h1>
 <img src="{{ artwork.image_url.url }}" alt="{{ artwork.alt_text }}">
+{% if artwork.video_url %}
+  <video controls>
+    <source src="{{ artwork.video_url.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+{% endif %}
 <p>Artist: {{ artwork.artist.name }}</p>
 <p>£{{ artwork.price }}</p>
 <p>{{ artwork.description|safe }}</p>
@@ -13,6 +19,11 @@
     <span>{{ tag.name }}</span>
   {% endfor %}
 </p>
+
+{% if user.is_superuser %}
+  <a href="{% url 'artwork_edit' artwork.pk %}">Edit</a>
+  <a href="{% url 'artwork_delete' artwork.pk %}">Delete</a>
+{% endif %}
 
 <a href="{% url 'gallery' %}">Back to gallery</a>
 {% endblock %}
