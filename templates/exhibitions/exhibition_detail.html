@@ -6,7 +6,9 @@
     <h1>{{ exhibition.title }}</h1>
     <p><strong>Dates:</strong> {{ exhibition.start_date }} - {{ exhibition.end_date }}</p>
     <div class="exhibition-media">
-      <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }} Cover Image">
+      {% if exhibition.cover_image %}
+        <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }} Cover Image">
+      {% endif %}
       {% if exhibition.video %}
         <video width="640" height="480" controls>
           <source src="{{ exhibition.video.url }}" type="video/mp4">
