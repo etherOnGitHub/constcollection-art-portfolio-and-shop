@@ -32,6 +32,7 @@ class Artwork(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True)
     image_url = CloudinaryField('image')
+    video_url = CloudinaryField('video', blank=True, null=True)
     image_width = models.PositiveIntegerField(blank=True, null=True)
     image_height = models.IntegerField(blank=True, null=True)
     alt_text = models.CharField(max_length=150, blank=True)

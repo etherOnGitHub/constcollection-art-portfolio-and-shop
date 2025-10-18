@@ -23,6 +23,7 @@ class ArtworkAdmin(SummernoteModelAdmin):
                 'price',
                 'is_available',
                 'image_url',
+                'video_url',
                 'thumbnail_preview', 
                 'description',
                 'tags',

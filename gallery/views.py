@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Artwork, Tag
 from django.views.generic import TemplateView
+from .decorators import superuser_required_cbv
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.utils.text import slugify
+from .forms import ArtworkForm
 import stripe
 from django.conf import settings
 
@@ -50,6 +55,48 @@ def artwork_detail(request, slug):
     }
     return render(request, 'gallery/artwork_detail.html', context)
 
+@superuser_required_cbv
+class ArtworkListView(ListView):
+    model = Artwork
+    template_name = "gallery/artwork_list.html"
+    context_object_name = "artworks"
+
+@superuser_required_cbv
+class ArtworkDetailView(DetailView):
+    model = Artwork
+    template_name = "gallery/artwork_detail.html"
+    context_object_name = "artwork"
+
+@superuser_required_cbv
+class ArtworkCreateView(CreateView):
+    model = Artwork
+    form_class = ArtworkForm
+    template_name = "gallery/artwork_form.html"
+    success_url = reverse_lazy("artwork_list")
+
+    def form_valid(self, form):
+        if not form.instance.slug:
+            form.instance.slug = slugify(form.instance.title)
+        return super().form_valid(form)
+
+@superuser_required_cbv
+class ArtworkUpdateView(UpdateView):
+    model = Artwork
+    form_class = ArtworkForm
+    template_name = "gallery/artwork_form.html"
+    success_url = reverse_lazy("artwork_list")
+
+    def form_valid(self, form):
+        if not form.instance.slug:
+            # Preserve the existing slug if the form's slug is empty
+            form.instance.slug = self.get_object().slug
+        return super().form_valid(form)
+
+@superuser_required_cbv
+class ArtworkDeleteView(DeleteView):
+    model = Artwork
+    template_name = "gallery/artwork_confirm_delete.html"
+    success_url = reverse_lazy("artwork_list")
 
 def create_checkout_session(request, art_id):
     artwork = get_object_or_404(Artwork, pk=art_id, is_available=True)

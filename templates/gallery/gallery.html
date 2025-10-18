@@ -23,9 +23,13 @@
     </select>
   </div>
 </form>
+  {% if user.is_superuser %}
+    <a href="{% url 'artwork_create' %}">Add Artwork</a>
+    <a href="{% url 'artwork_list' %}">Manage Artworks</a>
+  {% endif %}
 <!-- Art Entries Column -->
 <div class="gallery-container">
-  <div class="section-title text-center mb-5" role="banner" aria-label="Gallery and shop">
+  <div class="section-title mb-5 text-center" role="banner" aria-label="Gallery and shop">
     <h2 class="mb-4">Gallery & Shop</h2>
     <p class="lead">Browse and buy original artworks — available to purchase online.</p>
   </div>
@@ -58,12 +62,12 @@
       </div>
     {% endfor %}
   </div>
-
+  
   <!-- Shop highlight band: sits under the gallery, above the footer -->
   <section class="shop-highlight py-5" aria-label="Shop highlights">
     <div class="container text-center">
       <div class="shop-highlight-inner">
-        <div class="section-title text-center mb-3">
+        <div class="section-title mb-3 text-center">
           <h3 class="mb-3">Ready to take a piece home?</h3>
           <p class="lead">Free shipping in Sweden on orders over 10000 kr. For international orders, contact for shipping options and quotes.</p>
         </div>
@@ -71,5 +75,5 @@
       </div>
     </div>
   </section>
-
+</div>
 {% endblock %}

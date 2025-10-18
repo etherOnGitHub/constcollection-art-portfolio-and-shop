@@ -8,13 +8,22 @@
         alt="{{ artwork.alt_text|default:artwork.title }}"
       />
       {% endif %}
+      {% if artwork.video_url %}
+  <video controls>
+    <source src="{{ artwork.video_url.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+{% endif %}
     </div>
+    {% if user.is_superuser %}
+  <a href="{% url 'artwork_update' artwork.pk %}">Edit</a>
+  <a href="{% url 'artwork_delete' artwork.pk %}">Delete</a>
+{% endif %}
     <div class="art-detail-info">
       <h1>{{ artwork.title }}</h1>
       <p class="art-artist">{{ artist.name }}</p>
       <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
       <div class="art-description">{{ artwork.description|safe }}</div>
-
       {% if artwork.image_width and artwork.image_height %}
       <p class="art-dimensions">
         Dimensions: {{ artwork.image_width }} x {{ artwork.image_height }} in
