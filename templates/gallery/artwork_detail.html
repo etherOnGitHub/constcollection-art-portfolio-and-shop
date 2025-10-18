@@ -21,7 +21,7 @@
 </p>
 
 {% if user.is_superuser %}
-  <a href="{% url 'artwork_edit' artwork.pk %}">Edit</a>
+  <a href="{% url 'artwork_update' artwork.pk %}">Edit</a>
   <a href="{% url 'artwork_delete' artwork.pk %}">Delete</a>
 {% endif %}
 

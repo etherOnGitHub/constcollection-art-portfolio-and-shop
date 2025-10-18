@@ -12,8 +12,8 @@ urlpatterns = [
 
     # Superuser CRUD views for frontend
     path('manage/artworks/', ArtworkListView.as_view(), name='artwork_list'),
-    path('manage/artworks/add/', ArtworkCreateView.as_view(), name='artwork_add'),
+    path('manage/artworks/add/', ArtworkCreateView.as_view(), name='artwork_create'),
     path('manage/artworks/<int:pk>/', ArtworkDetailView.as_view(), name='artwork_detail_superuser'),
-    path('manage/artworks/<int:pk>/edit/', ArtworkUpdateView.as_view(), name='artwork_edit'),
+    path('manage/artworks/<int:pk>/edit/', ArtworkUpdateView.as_view(), name='artwork_update'),
     path('manage/artworks/<int:pk>/delete/', ArtworkDeleteView.as_view(), name='artwork_delete'),
 ]

@@ -22,7 +22,8 @@
 
 <div class="gallery">
   {% if user.is_superuser %}
-    <a href="{% url 'artwork_add' %}">Add Artwork</a>
+    <a href="{% url 'artwork_create' %}">Add Artwork</a>
+    <a href="{% url 'artwork_list' %}">Manage Artworks</a>
   {% endif %}
   {% for artwork in artworks %}
     <div class="art-item">

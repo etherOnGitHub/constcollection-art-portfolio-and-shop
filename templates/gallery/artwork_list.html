@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Artworks</h1>
+
+{% if user.is_superuser %}
+    <a href="{% url 'artwork_create' %}" class="btn btn-primary">Add Artwork</a>
+{% endif %}
+
+<div class="artwork-list">
+    {% for artwork in artworks %}
+        <div class="artwork-card">
+            <a href="{% url 'artwork_detail' artwork.slug %}">
+                {% if artwork.image_url %}
+                    <img src="{{ artwork.image_url.url }}" alt="{{ artwork.title }}" width="200" style="object-fit: cover; border-radius: 5px;">
+                {% else %}
+                    <div class="no-image">No Image</div>
+                {% endif %}
+            </a>
+
+            <h3>{{ artwork.title }}</h3>
+            <p>By {{ artwork.artist.name }}</p>
+            <p>Price: ${{ artwork.price }}</p>
+
+            {% if user.is_superuser %}
+    <div class="actions">
+        <a href="{% url 'artwork_update' artwork.pk %}" class="btn btn-secondary">Edit</a>
+        <a href="{% url 'artwork_delete' artwork.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'artwork_detail_superuser' artwork.pk %}" class="btn btn-info">View</a>
+    </div>
+{% endif %}
+        </div>
+    {% empty %}
+        <p>No artworks found.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
