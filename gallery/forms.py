@@ -11,7 +11,7 @@ class ArtworkForm(forms.ModelForm):
 
     class Meta:
         model = Artwork
-        fields = ['title', 'artist', 'price', 'is_available', 'image_url', 'description', 'tags']
+        fields = ['title', 'artist', 'price', 'is_available', 'image_url', 'video_url', 'description', 'tags']
         widgets = {
             'description': SummernoteWidget(),  # Use Summernote for description
         }
