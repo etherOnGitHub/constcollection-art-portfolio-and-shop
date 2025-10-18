@@ -7,8 +7,8 @@ from gallery.decorators import superuser_required_cbv, superuser_required
 # Create your views here.
 
 def exhibition_list(request):
-    exhibitions = Exhibition.objects.all()
-    return render(request, 'exhibitions/exhibition_list.html', {'exhibitions': exhibitions})
+    exhibition = Exhibition.objects.all()
+    return render(request, 'exhibitions/exhibition_list.html', {'exhibition': exhibition})
 
     # Logic to retrieve and display a list of exhibitions
     return render(request, 'exhibitions/exhibition_list.html')

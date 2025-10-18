@@ -3,6 +3,9 @@
 {% block title %}Exhibitions{% endblock title %}
 {% block content %}
     <h1>Exhibitions</h1>
+    {%if user.is_superuser %}
+        <a href="{% url 'exhibition_create' %}" class="btn btn-primary">Add Exhibition</a>
+    {% endif %}
     <ul>
         {% for exhibition in exhibitions %}
             <li>
