@@ -16,6 +16,17 @@ class ArtworkForm(forms.ModelForm):
             'description': SummernoteWidget(),  # Use Summernote for description
         }
 
+        error_messages = {
+            'title': {
+                'max_length': 'The title is too long. Please limit it to 200 characters.',
+            },
+            'price': {
+                'invalid': 'Please enter a valid price.',
+            },
+        }
+
+
+
     def save(self, commit=True):
         instance = super().save(commit=False)
         if commit:
@@ -29,3 +40,5 @@ class ArtworkForm(forms.ModelForm):
                         tag, _ = Tag.objects.get_or_create(name=name)
                         instance.tags.add(tag)
         return instance
+    
+    
