@@ -41,4 +41,3 @@ class ArtworkForm(forms.ModelForm):
                         instance.tags.add(tag)
         return instance
     
-    
