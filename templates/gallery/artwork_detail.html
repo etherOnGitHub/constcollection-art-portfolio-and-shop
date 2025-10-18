@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} 
+{% block title %}{{ artwork.title }}{% endblock title %}
+{% block content %}
 <div class="container">
   <div class="art-detail">
     <div class="art-detail-media">

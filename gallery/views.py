@@ -1,15 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Artwork, Tag
 from django.views.generic import TemplateView
-from .decorators import superuser_required_cbv
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from .forms import ArtworkForm
 import stripe
 from django.conf import settings
+from django.contrib.auth.decorators import user_passes_test
+from django.utils.decorators import method_decorator
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+def superuser_required_cbv(view_class):
+    """
+    Class decorator to require the user to be a superuser for class-based views.
+    Applies a user_passes_test decorator to the view's dispatch method so
+    the usual login/redirect behavior is preserved.
+    """
+    decorator = user_passes_test(lambda u: u.is_active and u.is_superuser)
+    view_class.dispatch = method_decorator(decorator)(view_class.dispatch)
+    return view_class
 
 
 class HomePage(TemplateView):

@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('gallery.urls')),
     path('', include('contact.urls')),
+    path('', include('exhibitions.urls')),
     path('faq/', TemplateView.as_view(template_name='faq.html'), name='faq'),
     path("accounts/", include("allauth.urls")),
 ]
