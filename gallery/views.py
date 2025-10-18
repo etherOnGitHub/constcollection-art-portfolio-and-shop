@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artwork, Tag, Artist
 from django.views.generic import TemplateView
+from .decorators import superuser_required_cbv
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .forms import ArtworkForm
 
 
 class HomePage(TemplateView):
@@ -44,3 +48,35 @@ def artwork_detail(request, slug):
         'artwork': artwork,
     }
     return render(request, 'gallery/artwork_detail.html', context)
+
+@superuser_required_cbv
+class ArtworkListView(ListView):
+    model = Artwork
+    template_name = "gallery/artwork_list.html"
+    context_object_name = "artworks"
+
+@superuser_required_cbv
+class ArtworkDetailView(DetailView):
+    model = Artwork
+    template_name = "gallery/artwork_detail.html"
+    context_object_name = "artwork"
+
+@superuser_required_cbv
+class ArtworkCreateView(CreateView):
+    model = Artwork
+    form_class = ArtworkForm
+    template_name = "gallery/artwork_form.html"
+    success_url = reverse_lazy("artwork_list")
+
+@superuser_required_cbv
+class ArtworkUpdateView(UpdateView):
+    model = Artwork
+    form_class = ArtworkForm
+    template_name = "gallery/artwork_form.html"
+    success_url = reverse_lazy("artwork_list")
+
+@superuser_required_cbv
+class ArtworkDeleteView(DeleteView):
+    model = Artwork
+    template_name = "gallery/artwork_confirm_delete.html"
+    success_url = reverse_lazy("artwork_list")
