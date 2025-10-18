@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 {% url 'home' as home_url %}
 {% url 'gallery' as gallery_url %}
 {% url 'exhibition_list' as exhibitions_url %}
@@ -71,11 +71,11 @@
 
         <!-- right-aligned status -->
         {% if user.is_authenticated %}
-        <p class="small position-absolute end-0 mb-0 me-3 text-end">
+        <p class="small position-absolute d-none d-lg-block end-0 mb-0 me-3 text-end">
           Signed in as {{ user }}.
         </p>
         {% else %}
-        <p class="small position-absolute d-none end-0 mb-0 me-3 text-end">
+        <p class="small position-absolute d-none d-none d-lg-block end-0 mb-0 me-3 text-end">
           Not signed in — sign up to follow new work.
         </p>
         {% endif %}
