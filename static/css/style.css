@@ -171,6 +171,39 @@ nav.navbar .navbar-brand img.logo {
   }
 }
 
+#DA {
+    font-family: "Xanh Mono", monospace;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-body-text);
+    position: absolute;
+    display: block;
+    flex-shrink: inherit;
+    inline-size: auto;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 17%;
+    background: rgba(255, 255, 255, 0.7);
+    width: auto;
+    text-align: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 1);
+    font-size: 1.2rem;
+    white-space: nowrap;
+    padding-right: 0.6rem;
+    line-height: 3;
+}
+
+#DA .alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-right: 2rem;
+    padding-block: 0.3rem;
+}
+
 /* Tablet-specific layout tweaks (target narrow tablet widths) */
 @media (min-width: 992px) and (max-width: 1100px) {
   section#about article.row.align-items-center {
@@ -753,6 +786,13 @@ nav.navbar .navbar-brand img.logo {
     height: 55vh;
     min-height: 420px;
   }
+}
+
+#modal-container {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden !important;
 }
 
 /* Modals */

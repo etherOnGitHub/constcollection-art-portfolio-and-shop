@@ -1,9 +1,11 @@
 {% load static %}
 {% url 'home' as home_url %}
+{% url 'gallery' as gallery_url %}
+{% url 'exhibition_list' as exhibitions_url %}
+{% url 'faq' as faq_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
-{% url 'faq' as faq_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -158,21 +160,13 @@
               <a
                 class="nav-link {% if request.path == gallery_url %}active{% endif %}"
                 aria-current="page"
-                href="{% url 'gallery' %}#"
+                href="{% url 'gallery' %}"
                 >GALLERY</a
               >
             </li>
             <li class="nav-item">
               <a
-                class="nav-link {% if request.path == gallery_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'gallery' %}#"
-                >GALLERY</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == '/exhibitions/' %}active{% endif %}"
+                class="nav-link {% if request.path == exhibitions_url %}active{% endif %}"
                 aria-current="page"
                 href="{% url 'exhibition_list' %}"
                 >EXHIBITIONS</a
@@ -247,9 +241,9 @@
     </nav>
 
     <!-- displaying Django messages -->
-    <div class="container">
+    <div class="container" id="DA">
       <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div>
           {% for message in messages %}
           <div
             class="alert {{ message.tags }} alert-dismissible fade show"
@@ -257,12 +251,6 @@
             role="alert"
           >
             {{ message|safe }}
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-            ></button>
           </div>
           {% endfor %}
         </div>
@@ -434,13 +422,13 @@
 
     <!-- Custom JavaScript -->
     <script src="{% static 'js/script.js' %}"></script>
-
     <!-- modals -->
-    <div id="modal-container">
+    <div id="modal-container ">
     {% include "account/login.html" %}
     {% include "account/logout.html" %}
     {% include "account/signup.html" %}
     </div>
+    
     <!-- Additional blocks for child templates -->
     {% block extras %}{% endblock %}
   </body>
