@@ -301,18 +301,27 @@
           >
             <h5 class="footer-heading">Exhibitions & Viewings</h5>
             <ul class="list-unstyled footer-list">
-              <li>
-                <strong>Current:</strong> Selected galleries — by appointment
-              </li>
-              <li>
-                <strong>Upcoming:</strong> Solo presentation — details on
-                request
-              </li>
+              {% if upcoming_exhibitions %}
+                {% for exhibition in upcoming_exhibitions %}
+                <li>
+                  <strong>{{ exhibition.title }}</strong><br>
+                  {{ exhibition.start_date|date:"M d, Y" }} - {{ exhibition.end_date|date:"M d, Y" }}
+                </li>
+                {% endfor %}
+              {% else %}
+                <li>
+                  <strong>Current:</strong> Selected galleries — by appointment
+                </li>
+                <li>
+                  <strong>Upcoming:</strong> Solo presentation — details on
+                  request
+                </li>
+              {% endif %}
               <li>
                 <strong>Archive:</strong> Past shows available on the site
               </li>
               <li class="mt-2">
-                <a href="{% url "exhibition_list" %}" class="footer-link">View exhibitions</a>
+                <a href="{% url "exhibition_list" %}" class="footer-link">View all exhibitions</a>
               </li>
             </ul>
           </div>
