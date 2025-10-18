@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Edit Exhibition{% endblock %}
+{% block content %}
+  <h2>Edit Exhibition: {{ exhibition.title }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}
