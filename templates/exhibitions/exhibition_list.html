@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Exhibitions</h1>
+    <ul>
+        {% for exhibition in exhibitions %}
+            <li>
+                <h2>{{ exhibition.title }}</h2>
+                <img src="{{ exhibition.cover_image.url }}" alt="{{ exhibition.title }} Cover Image">
+                {% if exhibition.video %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ exhibition.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endif %}
+                <p>{{ exhibition.description }}</p>
+                <p>From {{ exhibition.start_date }} to {{ exhibition.end_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

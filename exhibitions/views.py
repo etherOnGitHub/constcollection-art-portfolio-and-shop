@@ -1,14 +1,19 @@
 from django.shortcuts import render
+from .models import Exhibition
 from gallery.decorators import superuser_required_cbv, superuser_required
 
 # Create your views here.
 
 def exhibition_list(request):
+    exhibitions = Exhibition.objects.all()
+    return render(request, 'exhibitions/exhibition_list.html', {'exhibitions': exhibitions})
+
     # Logic to retrieve and display a list of exhibitions
     return render(request, 'exhibitions/exhibition_list.html')
 
 def exhibition_detail(request, pk):
-    # Logic to retrieve and display details of a specific exhibition
+    exhibition = Exhibition.objects.get(pk=pk)
+    return render(request, 'exhibitions/exhibition_detail.html', {'exhibition': exhibition})
     return render(request, 'exhibitions/exhibition_detail.html', {'pk': pk})
 
 @superuser_required
