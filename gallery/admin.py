@@ -23,6 +23,7 @@ class ArtworkAdmin(SummernoteModelAdmin):
                 'price',
                 'is_available',
                 'image_url',
+                'video_url',
                 'thumbnail_preview', 
                 'description',
                 'tags',
@@ -49,7 +50,7 @@ class ArtworkAdmin(SummernoteModelAdmin):
     thumbnail_preview.short_description = "Current Thumbnail"
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    list_display = ('name', 'contact')
+    list_display = ('name', 'contact_email', 'contact_phone')
     search_fields = ('name',)
 
 @admin.register(Tag)
