@@ -1,38 +1,41 @@
 {% extends "base.html" %}
 {% block title %}Artworks{% endblock title %}
 {% block content %}
-<h1>Artworks</h1>
-
-{% if user.is_superuser %}
-    <a href="{% url 'artwork_create' %}" class="btn btn-primary">Add Artwork</a>
-{% endif %}
-
-<div class="artwork-list">
+<div class="gallery-container">
+  <div class="section-title mb-5 text-center" role="banner" aria-label="Manage Artworks">
+    <h2 class="mb-4">Manage Artworks</h2>
+    {% if user.is_superuser %}
+      <a href="{% url 'artwork_create' %}" class="btn btn-primary mb-3">Add Artwork</a>
+    {% endif %}
+  </div>
+  <div class="gallery-row">
     {% for artwork in artworks %}
-        <div class="artwork-card">
-            <a href="{% url 'artwork_detail' artwork.slug %}">
-                {% if artwork.image_url %}
-                    <img src="{{ artwork.image_url.url }}" alt="{{ artwork.title }}" width="200" style="object-fit: cover; border-radius: 5px;">
-                {% else %}
-                    <div class="no-image">No Image</div>
-                {% endif %}
-            </a>
-
-            <h3>{{ artwork.title }}</h3>
-            <p>By {{ artwork.artist.name }}</p>
-            <p>Price: ${{ artwork.price }}</p>
-
-            {% if user.is_superuser %}
-    <div class="actions">
-        <a href="{% url 'artwork_update' artwork.pk %}" class="btn btn-secondary">Edit</a>
-        <a href="{% url 'artwork_delete' artwork.pk %}" class="btn btn-danger">Delete</a>
-        <a href="{% url 'artwork_detail_superuser' artwork.pk %}" class="btn btn-info">View</a>
-    </div>
-{% endif %}
+      <div class="art-card">
+        <div class="image-frame">
+          <a href="{% url 'artwork_detail' artwork.slug %}">
+            {% if artwork.image_url %}
+              <img src="{{ artwork.image_url.url }}" alt="{{ artwork.title }}" style="object-fit:cover; width:100%; height:200px; border-radius:0;">
+            {% else %}
+              <div class="no-image" style="width:100%; height:200px; background:#eee; display:flex; align-items:center; justify-content:center;">No Image</div>
+            {% endif %}
+          </a>
         </div>
+        <div class="card-meta">
+          <h3 class="art-title">{{ artwork.title }}</h3>
+          <p class="art-sub">{{ artwork.artist.name }}</p>
+          <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
+          {% if user.is_superuser %}
+            <div class="actions mt-2">
+              <a href="{% url 'artwork_update' artwork.pk %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+              <a href="{% url 'artwork_delete' artwork.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+              <a href="{% url 'artwork_detail_superuser' artwork.pk %}" class="btn btn-outline-info btn-sm">View</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
     {% empty %}
-        <p>No artworks found.</p>
+      <p>No artworks found.</p>
     {% endfor %}
+  </div>
 </div>
-
 {% endblock %}

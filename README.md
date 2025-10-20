@@ -1,15 +1,16 @@
 # ConstCollection Art Portfolio and Shop
 
-A portfolio and e-commerce MVP for artists to showcase their work and sell pieces online. Built with Django, featuring a gallery page and integrated payment system.
+A portfolio and e-commerce platform for Swedish artists to showcase, manage, and sell original artwork online. Built with Django, featuring a modern gallery, secure Stripe payments in SEK, and robust admin management tools.
 
 ---
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [MVP Features](#mvp-features)
+- [Core Features](#core-features)
 - [UX & Design](#ux--design)
 - [Gallery Page](#gallery-page)
 - [Payment System](#payment-system)
+- [Admin Management](#admin-management)
 - [Features Left to Implement](#features-left-to-implement)
 - [User Stories & Kanban Board](#user-stories--kanban-board)
 - [Database & ERD Diagram](#database--erd-diagram)
@@ -21,33 +22,50 @@ A portfolio and e-commerce MVP for artists to showcase their work and sell piece
 ---
 
 ## Project Overview
-ConstCollection is a Django web application for artists to display their artwork and offer pieces for sale. The MVP includes a gallery page for browsing art and a payment system for secure purchases.
+ConstCollection is a Django web application for artists in Sweden to display their artwork and offer pieces for sale. The platform includes a gallery for browsing art, a payment system for secure purchases in Swedish Krona (SEK), and admin tools for managing content and orders.
 
-## MVP Features
-- 🖼️ Gallery Page: Browse and view artwork with details and images.
-- 💳 Payment System: Purchase art securely through integrated payment processing.
+## Core Features
+- 🖼️ **Gallery Page:** Browse and view artwork with details, images, and artist info. Sold artworks are clearly marked.
+- 💳 **Payment System:** Purchase art securely through Stripe, with prices and payments in SEK.
+- 🛠️ **Admin Dashboard:** Add, edit, and delete artworks; manage orders and inventory.
+- 👤 **User Authentication:** Register, log in, and view order history.
+- 📄 **About & Contact Pages:** Learn about the artist and get in touch.
+- 📱 **Responsive Design:** Works on desktop, tablet, and mobile.
+- 🏷️ **Tag Filtering & Sorting:** Filter artworks by tags and sort by price or date.
+- 📦 **Order Management:** Track purchases and view order history.
 
 ## UX & Design
-- Clean, modern layout focused on artwork presentation
-- Responsive design for desktop and mobile
-- Simple navigation between gallery and shop
+- Clean, modern layout focused on artwork presentation.
+- Consistent styling across gallery, forms, and admin pages.
+- Responsive design for all devices.
+- Simple navigation between gallery, shop, and artist info.
+- Clear feedback for actions (purchase success/cancel, form errors).
 
 ## Gallery Page
-- Grid or card-based display of artworks
-- Artwork details: title, artist, medium, price, image
-- Click to view larger image and more info
+- Card-based display of artworks with images, title, artist, and price (in kr).
+- Click to view larger image and more info.
+- Sold artworks are clearly marked.
+- Pagination for easy browsing.
+- Tag filtering and sorting options.
 
 ## Payment System
-- Add artwork to cart
-- Checkout with secure payment (e.g., Stripe integration)
-- Order confirmation and receipt
+- Stripe Checkout integration for secure payments in SEK.
+- Success and cancel pages styled for clarity.
+- Order confirmation and receipt after purchase.
+- Stripe session logic ensures correct currency and pricing.
+
+## Admin Management
+- Add, edit, and delete artworks from the admin dashboard.
+- Manage orders and view user purchase history.
+- Inventory management for prints and originals.
+- All changes reflected immediately on the public gallery.
 
 ## Features Left to Implement
-- User authentication and profiles
-- Order history and tracking
-- Admin dashboard for managing artworks and orders
-- Wishlist/favorites
-- Reviews and ratings
+- Wishlist/favorites for users.
+- Reviews and ratings for artworks.
+- Enhanced user profiles.
+- Email notifications for orders and contact form submissions.
+- Social media integration for artist promotion.
 
 ## User Stories & Kanban Board
 
@@ -171,22 +189,21 @@ ConstCollection is a Django web application for artists to display their artwork
 
 ## Kanban board
 
-![Initial Project Board](<assets/readme_docs/images/Screenshot 2025-10-15 at 16.05.05.png>)
+![Initial Project Board](assets/readme_docs/images/Screenshot%202025-10-15%20at%2016.05.05.png)
 
 ## Database & ERD Diagram
 - MVP ERD: User, Artwork, Order models and relationships
-![MVP ERD WITH PAYMENT](<assets/readme_docs/images/Screenshot 2025-10-15 at 16.04.28.png>)
-
+![MVP ERD WITH PAYMENT](assets/readme_docs/images/Screenshot%202025-10-15%20at%2016.04.28.png)
 
 ## Technologies Used
 - Backend: Python 3.12, Django 5+
 - Database: PostgreSQL
 - Frontend: HTML5, CSS3, JavaScript
-- Payment: Stripe API
+- Payment: Stripe API (SEK currency)
 - Deployment: Heroku, Cloudinary, WhiteNoise
 
 ## Testing & Validation
-- Manual testing of gallery and payment flows
+- Manual testing of gallery, admin, and payment flows
 - Automated Django tests for models and views
 
 ## Deployment
