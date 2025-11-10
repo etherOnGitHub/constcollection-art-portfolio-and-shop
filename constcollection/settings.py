@@ -33,7 +33,7 @@ DEBUG = os.environ.get('DEBUG', 'False')
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'synth.aetherwave.dev',
+    'const.aetherwave.dev',
     'localhost',
     os.environ.get('HEROKU_LINK',
     'default')
