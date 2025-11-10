@@ -121,7 +121,7 @@ def create_checkout_session(request, art_id):
         payment_method_types=['card'],
         line_items=[{
             'price_data': {
-                'currency': 'gbp',
+                'currency': 'sek',  # <-- Use 'sek' for Swedish Krona
                 'product_data': {
                     'name': artwork.title,
                     'images': [artwork.image_url.url],

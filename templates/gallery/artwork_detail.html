@@ -1,53 +1,54 @@
-{% extends "base.html" %} {% load static %} 
+{% extends "base.html" %}
+{% load static %}
 {% block title %}{{ artwork.title }}{% endblock title %}
 {% block content %}
 <div class="container">
   <div class="art-detail">
     <div class="art-detail-media">
       {% if artwork.image_url %}
-      <img
-        src="{{ artwork.image_url.url }}"
-        alt="{{ artwork.alt_text|default:artwork.title }}"
-      />
+        <img
+          src="{{ artwork.image_url.url }}"
+          alt="{{ artwork.alt_text|default:artwork.title }}"
+        />
       {% endif %}
       {% if artwork.video_url %}
-  <video controls>
-    <source src="{{ artwork.video_url.url }}" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-{% endif %}
+        <video controls>
+          <source src="{{ artwork.video_url.url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% endif %}
+      {% if user.is_superuser %}
+        <div class="mt-2">
+          <a href="{% url 'artwork_update' artwork.pk %}" class="btn btn-outline-primary btn-sm">Edit</a>
+          <a href="{% url 'artwork_delete' artwork.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+        </div>
+      {% endif %}
     </div>
-    {% if user.is_superuser %}
-  <a href="{% url 'artwork_update' artwork.pk %}">Edit</a>
-  <a href="{% url 'artwork_delete' artwork.pk %}">Delete</a>
-{% endif %}
     <div class="art-detail-info">
       <h1>{{ artwork.title }}</h1>
       <p class="art-artist">{{ artist.name }}</p>
       <p class="art-price">kr {{ artwork.price|floatformat:2 }}</p>
       <div class="art-description">{{ artwork.description|safe }}</div>
       {% if artwork.image_width and artwork.image_height %}
-      <p class="art-dimensions">
-        Dimensions: {{ artwork.image_width }} x {{ artwork.image_height }} in
-      </p>
-      {% endif %} {% if artwork.is_available %}
-      <form
-        action="{% url 'create_checkout_session' artwork.art_id %}"
-        method="POST"
-      >
-        {% csrf_token %}
-        <button type="submit" class="btn btn-dark btn-shop-highlight">
-          Buy now
-        </button>
-      </form>
-      {% else %}
-      <span class="badge bg-secondary">Sold</span>
+        <p class="art-dimensions">
+          Dimensions: {{ artwork.image_width }} x {{ artwork.image_height }} in
+        </p>
       {% endif %}
-
-      <p class="mt-3">
-        <a href="{% url 'gallery' %}" class="back-to-gallery"
-          >Back to gallery</a
+      {% if artwork.is_available %}
+        <form
+          action="{% url 'create_checkout_session' artwork.art_id %}"
+          method="POST"
         >
+          {% csrf_token %}
+          <button type="submit" class="btn btn-dark btn-shop-highlight">
+            Buy now
+          </button>
+        </form>
+      {% else %}
+        <span class="badge bg-secondary">Sold</span>
+      {% endif %}
+      <p class="mt-3">
+        <a href="{% url 'gallery' %}" class="back-to-gallery">Back to gallery</a>
       </p>
     </div>
   </div>

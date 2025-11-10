@@ -1,37 +1,42 @@
 {% extends "base.html" %}
 {% block title %}{% if object %}Edit Artwork{% else %}Add Artwork{% endif %}{% endblock title %}
 {% block content %}
-<h1>{% if object %}Edit{% else %}Add{% endif %} Artwork</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-
-    {% for field in form %}
-        <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+<div class="gallery-container">
+  <div class="section-title mb-5 text-center" role="banner" aria-label="{% if object %}Edit Artwork{% else %}Add Artwork{% endif %}">
+    <h2 class="mb-4">{% if object %}Edit{% else %}Add{% endif %} Artwork</h2>
+  </div>
+  <div class="gallery-row justify-content-center">
+    <div class="art-card justify-content-center" style="max-width:800px; margin:auto;">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {% for field in form %}
+          <div class="form-group mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
             {{ field }}
             {% if field.help_text %}
-                <small class="text-muted">{{ field.help_text }}</small>
+              <small class="text-muted">{{ field.help_text }}</small>
             {% endif %}
             {% if field.errors %}
-                <div class="text-danger">
-                    {% for error in field.errors %}
-                        {{ error }}<br>
-                    {% endfor %}
-                </div>
+              <div class="text-danger">
+                {% for error in field.errors %}
+                  {{ error }}<br>
+                {% endfor %}
+              </div>
             {% endif %}
-        </div>
-    {% endfor %}
-
-    {% if form.non_field_errors %}
-        <div class="alert alert-danger">
+          </div>
+        {% endfor %}
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">
             {% for error in form.non_field_errors %}
-                {{ error }}<br>
+              {{ error }}<br>
             {% endfor %}
-        </div>
-    {% endif %}
-
-    <button type="submit">Save</button>
-</form>
-<a href="{% url 'artwork_list' %}">Back to list</a>
+          </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary w-100">Save</button>
+      </form>
+      <a href="{% url 'artwork_list' %}" class="btn btn-outline-secondary w-100 mt-3">Back to list</a>
+    </div>
+  </div>
+</div>
 {% endblock %}
