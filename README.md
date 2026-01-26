@@ -1,6 +1,6 @@
 # ConstCollection Art Portfolio and Shop
 
-A portfolio and e-commerce platform for Swedish artists to showcase, manage, and sell original artwork online. Built with Django, featuring a modern gallery, secure Stripe payments in SEK, and robust admin management tools.
+A portfolio and e-commerce platform for a Swedish artist to showcase, manage, and sell original artwork online. Built with Django, featuring a modern gallery, secure Stripe payments in SEK, and robust admin management tools.
 
 ---
 
@@ -22,7 +22,7 @@ A portfolio and e-commerce platform for Swedish artists to showcase, manage, and
 ---
 
 ## Project Overview
-ConstCollection is a Django web application for artists in Sweden to display their artwork and offer pieces for sale. The platform includes a gallery for browsing art, a payment system for secure purchases in Swedish Krona (SEK), and admin tools for managing content and orders.
+ConstCollection is a Django web application for an artist in Sweden to display their artwork and offer pieces for sale. The platform includes a gallery for browsing art, a payment system for secure purchases in Swedish Krona (SEK), and admin tools for managing content and orders.
 
 ## Core Features
 - 🖼️ **Gallery Page:** Browse and view artwork with details, images, and artist info. Sold artworks are clearly marked.
